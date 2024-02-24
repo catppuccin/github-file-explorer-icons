@@ -2,11 +2,9 @@ import { defineContentScript } from 'wxt/sandbox';
 import './styles.css';
 
 import { observe } from 'selector-observer';
-import { selectors } from '../../lib/constants';
-import {
-	replaceElementWithIcon,
-	replaceIconInRow,
-} from '../../lib/replace-icon';
+import { replaceAllIcons, replaceIconInRow } from '@/lib/replace-icon';
+import { selectors } from '@/lib/constants';
+import { flavor } from '@/lib/storage';
 
 export default defineContentScript({
 	matches: ['*://github.com/*'],
@@ -36,18 +34,13 @@ export default defineContentScript({
 		// Monitor DOM elements that match a CSS selector.
 		observe(selectors.row, {
 			add(row) {
-				const callback = () => replaceIconInRow(row);
+				const callback = async () => await replaceIconInRow(row);
 				rushFirst(90, callback);
 			},
 		});
+		// Monitor the flavor changing.
+		flavor.watch(replaceAllIcons);
 
-		for (const icon of document.querySelectorAll(
-			'img[data-catppuccin-extension-iconname]',
-		) as NodeListOf<HTMLElement>) {
-			const iconName = icon.getAttribute('data-catppuccin-extension-iconname');
-			const fileName = icon.getAttribute('data-catppuccin-extension-filename');
-			if (iconName && fileName)
-				replaceElementWithIcon(icon, iconName, fileName);
-		}
+		replaceAllIcons();
 	},
 });

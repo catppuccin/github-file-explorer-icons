@@ -1,10 +1,10 @@
 import type { PublicPath } from 'wxt/browser';
-import { browser } from 'wxt/browser';
 
 import { selectors } from './constants';
 import { associations } from '../vscode-icons.json';
+import { flavor } from '@/lib/storage';
 
-export function replaceIconInRow(row: Element): void {
+export async function replaceIconInRow(row: Element) {
 	// Get file/folder name.
 	const fileName = (
 		row.querySelector(selectors.filename) as HTMLElement
@@ -15,10 +15,10 @@ export function replaceIconInRow(row: Element): void {
 
 	const icon = row.querySelector(selectors.icon) as HTMLElement;
 	if (!icon?.hasAttribute('data-catppuccin-extension'))
-		replaceIcon(icon, fileName);
+		await replaceIcon(icon, fileName);
 }
 
-function replaceIcon(icon: HTMLElement, fileName: string): void {
+export async function replaceIcon(icon: HTMLElement, fileName: string) {
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
 		icon.classList.contains('octicon-file-directory-fill') ||
@@ -38,15 +38,15 @@ function replaceIcon(icon: HTMLElement, fileName: string): void {
 
 	const iconName = lookForMatch(fileName, fileExtensions, isDir, isSubmodule);
 
-	replaceElementWithIcon(icon, iconName, fileName);
+	await replaceElementWithIcon(icon, iconName, fileName);
 }
 
-export function replaceElementWithIcon(
+export async function replaceElementWithIcon(
 	icon: HTMLElement,
 	iconName: string,
 	fileName: string,
 ) {
-	const svgFileName = `frappe/${iconName}.svg`;
+	const svgFileName = `${await flavor.getValue()}/${iconName}.svg`;
 	if (!svgFileName) return;
 
 	const newSVG = document.createElement('img');
@@ -109,5 +109,15 @@ function lookForMatch(
 			return associations.folderNames[fileName.toLowerCase()];
 
 		return '_folder';
+	}
+}
+
+export function replaceAllIcons() {
+	for (const icon of document.querySelectorAll(
+		'img[data-catppuccin-extension-iconname]',
+	) as NodeListOf<HTMLElement>) {
+		const iconName = icon.getAttribute('data-catppuccin-extension-iconname');
+		const fileName = icon.getAttribute('data-catppuccin-extension-filename');
+		if (iconName && fileName) replaceElementWithIcon(icon, iconName, fileName);
 	}
 }
