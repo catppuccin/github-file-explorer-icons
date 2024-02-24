@@ -1,0 +1,10 @@
+.catppuccin-exension-hide-pseudo::before {
+	display: none !important;
+}
+
+/* Hide folder open/closed icons from new code view tree when clicked by disabling
+   display of those icons when they immediately follow the replaced icon. */
+img[data-catppuccin-extension='icon'] + svg.octicon-file-directory-open-fill,
+img[data-catppuccin-extension='icon'] + svg.octicon-file-directory-fill {
+	display: none !important;
+}

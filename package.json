@@ -1,0 +1,30 @@
+{
+	"name": "catppuccin-github-icons-extension",
+	"version": "0.1.0",
+	"description": "Soothing pastel icons for GitHub",
+	"license": "MIT",
+	"dependencies": {
+		"selector-observer": "2.1.6"
+	},
+	"devDependencies": {
+		"@humanfs/node": "0.13.0",
+		"@types/chrome": "0.0.261",
+		"jiti": "1.21.0",
+		"prettier": "3.2.5",
+		"rimraf": "5.0.5",
+		"web-ext": "7.11.0",
+		"wxt": "0.17.3"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"format": "prettier --write .",
+		"dev": "wxt",
+		"dev:firefox": "wxt --browser firefox",
+		"build": "wxt build",
+		"build:firefox": "wxt build --browser firefox",
+		"zip": "wxt zip",
+		"zip:firefox": "wxt zip --browser firefox",
+		"postinstall": "wxt prepare"
+	},
+	"type": "module"
+}

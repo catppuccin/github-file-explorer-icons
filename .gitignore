@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.wxt/
+
+src/public/
+src/vscode-icons.json
+
+.DS_Store
+Thumbs.db

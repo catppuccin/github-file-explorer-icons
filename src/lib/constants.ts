@@ -1,0 +1,17 @@
+export const selectors = {
+	row: `.js-navigation-container[role=grid] > .js-navigation-item,
+    file-tree .ActionList-content,
+    a.tree-browser-result,
+    .PRIVATE_TreeView-item-content,
+    .react-directory-filename-column`,
+	filename: `div[role="rowheader"] > span,
+    .ActionList-item-label,
+    a.tree-browser-result > marked-text,
+    .PRIVATE_TreeView-item-content > .PRIVATE_TreeView-item-content-text,
+    .react-directory-filename-column h3`,
+	icon: `.octicon-file,
+    .octicon-file-directory-fill,
+    .octicon-file-directory-open-fill,
+    .octicon-file-submodule,
+    .react-directory-filename-column > svg`,
+};
