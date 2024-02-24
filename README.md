@@ -36,7 +36,15 @@
 
 ## Usage
 
-1. [Install from the Chrome Web Store.]()
+```bash
+git clone https://github.com/uncenter/ctp-github-icons-extension.git && cd ctp-github-icons-extension
+pnpm install
+pnpm build
+```
+
+1. Open the Extensions page by navigating to `chrome://extensions`.
+2. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
+3. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
 
 ## 💝 Thanks to
 
