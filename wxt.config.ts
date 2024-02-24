@@ -25,7 +25,9 @@ export default defineConfig({
 			// Copy icons:
 			const SRC = join(__dirname, './vscode-icons/icons/');
 			const DEST = join(__dirname, './src/public/');
-      await hfs.deleteAll(DEST);
+			if (await hfs.isDirectory(DEST)) await hfs.deleteAll(DEST);
+
+			await hfs.createDirectory(DEST);
 			await hfs.copyAll(SRC, DEST);
 			await hfs.deleteAll(join(DEST, 'css-variables'));
 
@@ -33,8 +35,7 @@ export default defineConfig({
 			await hfs.write(
 				join(__dirname, './src/vscode-icons.json'),
 				JSON.stringify(
-					jiti(__dirname)('./vscode-icons/src/defaults/index.ts')
-						.defaultConfig,
+					jiti(__dirname)('./vscode-icons/src/defaults/index.ts').defaultConfig,
 				),
 			);
 		},
