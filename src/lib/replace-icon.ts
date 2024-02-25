@@ -8,7 +8,7 @@ export async function replaceIconInRow(row: Element) {
 	// Get file/folder name.
 	const fileName = (
 		row.querySelector(selectors.filename) as HTMLElement
-	).innerText
+	).textContent
 		?.split('/')[0]
 		.trim();
 	if (!fileName) return;
@@ -88,6 +88,7 @@ function lookForMatch(
 	isSubmodule: boolean,
 ): string {
 	if (isSubmodule) return 'folder_git';
+	if (fileName === '..') return '_folder';
 
 	if (!isDir) {
 		if (fileName in associations.fileNames)
