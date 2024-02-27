@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/template/stargazers"><img src="https://img.shields.io/github/stars/uncenter/ctp-github-icons-extension?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/uncenter/ctp-github-icons-extension/issues"><img src="https://img.shields.io/github/issues/uncenter/ctp-github-icons-extension?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/uncenter/ctp-github-icons-extension/contributors"><img src="https://img.shields.io/github/contributors/uncenter/ctp-github-icons-extension?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/uncenter/ctp-github-file-explorer/stargazers"><img src="https://img.shields.io/github/stars/uncenter/ctp-github-file-explorer?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/uncenter/ctp-github-file-explorer/issues"><img src="https://img.shields.io/github/issues/uncenter/ctp-github-file-explorer?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/uncenter/ctp-github-file-explorer/contributors"><img src="https://img.shields.io/github/contributors/uncenter/ctp-github-file-explorer?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -37,7 +37,7 @@
 ## Usage
 
 ```bash
-git clone https://github.com/uncenter/ctp-github-icons-extension.git && cd ctp-github-icons-extension
+git clone https://github.com/uncenter/ctp-github-file-explorer.git && cd ctp-github-file-explorer
 pnpm install
 ```
 
@@ -53,7 +53,7 @@ pnpm install
 1. Run `pnpm zip:firefox` to build and zip the extension for Firefox.
 2. Open the Add-ons page by navigating to `about:addons`.
 3. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
-4. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-icons-extension-<version>-firefox.zip` file from the cloned repository.
+4. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-file-explorer-<version>-firefox.zip` file from the cloned repository.
 
 ## 💝 Thanks to
 
