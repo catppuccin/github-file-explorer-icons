@@ -39,12 +39,21 @@
 ```bash
 git clone https://github.com/uncenter/ctp-github-icons-extension.git && cd ctp-github-icons-extension
 pnpm install
-pnpm build
 ```
 
-1. Open the Extensions page by navigating to `chrome://extensions`.
-2. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
-3. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
+### Chrome
+
+1. Run `pnpm build` to build the extension (defaults to Chrome)
+2. Open the Extensions page by navigating to `chrome://extensions`.
+3. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
+4. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
+
+### Firefox
+
+1. Run `pnpm zip:firefox` to build and zip the extension for Firefox.
+2. Open the Add-ons page by navigating to `about:addons`.
+3. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
+4. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-icons-extension-<version>-firefox.zip` file from the cloned repository.
 
 ## 💝 Thanks to
 
