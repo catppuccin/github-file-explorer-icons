@@ -10,9 +10,9 @@ export default defineConfig({
 	entrypointsDir: 'entries',
 	outDir: 'dist',
 	manifest: {
-		name: 'Catppuccin for GitHub File Explorer',
+		name: 'Catppuccin for GitHub File Explorer Icons',
 		permissions: ['storage'],
-		homepage_url: 'https://github.com/catppuccin/github-icons',
+		homepage_url: 'https://github.com/catppuccin/github-file-explorer-icons',
 		web_accessible_resources: [
 			{
 				resources: ['*.svg'],

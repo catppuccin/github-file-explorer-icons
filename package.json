@@ -1,7 +1,7 @@
 {
-	"name": "catppuccin-github-file-explorer",
+	"name": "catppuccin-github-file-explorer-icons",
 	"version": "0.1.0",
-	"description": "Soothing pastel icons for GitHub",
+	"description": "Soothing pastel icons for GitHub File Explorer",
 	"license": "MIT",
 	"dependencies": {
 		"selector-observer": "2.1.6"
