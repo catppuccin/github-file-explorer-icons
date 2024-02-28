@@ -37,7 +37,7 @@
 ## Usage
 
 ```bash
-git clone https://github.com/catppuccin/github-file-explorer-icons.git && cd github-file-explorer-icons
+git clone --recurse-submodules https://github.com/uncenter/ctp-github-file-explorer-icons.git && cd ctp-github-file-explorer-icons
 pnpm install
 ```
 
