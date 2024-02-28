@@ -4,27 +4,28 @@ import { selectors } from './constants';
 import { associations } from '../vscode-icons.json';
 import { flavor } from '@/lib/storage';
 
-export async function replaceIconInRow(row: Element) {
-	// Get file/folder name.
-	const fileName = (
-		row.querySelector(selectors.filename) as HTMLElement
-	).textContent
-		?.split('/')[0]
-		.trim();
-	if (!fileName) return;
-
+export async function replaceIconInRow(row: HTMLElement) {
 	const icon = row.querySelector(selectors.icon) as HTMLElement;
-	if (!icon?.hasAttribute('data-catppuccin-extension'))
-		await replaceIcon(icon, fileName);
+	if (icon && !icon?.hasAttribute('data-catppuccin-extension'))
+		await replaceIcon(icon, row);
 }
 
-export async function replaceIcon(icon: HTMLElement, fileName: string) {
+export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
+	const fileNameEl = row.querySelector(selectors.filename) as HTMLElement;
+	if (!fileNameEl) return;
+	const fileName = fileNameEl.textContent?.split('/')[0].trim();
+
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
 		icon.classList.contains('octicon-file-directory-fill') ||
 		icon.classList.contains('octicon-file-directory-open-fill') ||
 		icon.classList.contains('icon-directory');
-	const isSubmodule = icon.getAttribute('aria-label') === 'Submodule';
+	const isSubmodule =
+		icon.classList.contains('octicon-file-submodule') ||
+		fileNameEl
+			.querySelector('a')
+			?.getAttribute('aria-label')
+			.includes('(Submodule)');
 
 	const fileExtensions: string[] = [];
 	// Avoid doing an explosive combination of extensions for very long filenames
