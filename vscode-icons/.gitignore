@@ -1,6 +1,0 @@
-dist/
-node_modules/
-.eslintcache
-.pnpm-debug.log*
-*.vsix
-.DS_Store
