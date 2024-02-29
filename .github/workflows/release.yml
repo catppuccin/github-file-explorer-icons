@@ -26,7 +26,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build and zip
-        run: pnpm zip
+        run: |
+          pnpm zip
+          pnpm zip:firefox
 
       - name: Release
         uses: softprops/action-gh-release@v1
