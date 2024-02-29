@@ -36,24 +36,27 @@
 
 ## Usage
 
+### Chrome
+
+1. Download the `catppuccin-github-file-explorer-icons-<version>-chrome.zip` asset from the latest release.
+2. Unzip the archive file into a directory.
+3. In your browser, open the Extensions page by navigating to `chrome://extensions`.
+4. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
+5. Click the **Load unpacked** button and select the unzipped directory from step 2.
+
+### Firefox
+
+1. Download the `catppuccin-github-file-explorer-icons-<version>-firefox.zip` asset from the latest release.
+3. In your browser, open the Add-ons page by navigating to `about:addons`.
+4. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
+5. Click the **Load Temporary Add-on...** button and select the zip file from step 1.
+
+## Development
+
 ```bash
 git clone --recurse-submodules https://github.com/uncenter/ctp-github-file-explorer-icons.git && cd ctp-github-file-explorer-icons
 pnpm install
 ```
-
-### Chrome
-
-1. Run `pnpm build` to build the extension (defaults to Chrome)
-2. Open the Extensions page by navigating to `chrome://extensions`.
-3. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
-4. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
-
-### Firefox
-
-1. Run `pnpm zip:firefox` to build and zip the extension for Firefox.
-2. Open the Add-ons page by navigating to `about:addons`.
-3. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
-4. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-file-explorer-icons-<version>-firefox.zip` file from the cloned repository.
 
 ## 💝 Thanks to
 
