@@ -38,7 +38,7 @@
 
 ### Chrome
 
-1. Download the `catppuccin-github-file-explorer-icons-<version>-chrome.zip` asset from the latest release.
+1. Download the `catppuccin-github-file-explorer-icons-<version>-chrome.zip` asset from the [latest release](https://github.com/uncenter/ctp-github-file-explorer-icons/releases/latest/).
 2. Unzip the archive file into a directory.
 3. In your browser, open the Extensions page by navigating to `chrome://extensions`.
 4. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
@@ -46,7 +46,7 @@
 
 ### Firefox
 
-1. Download the `catppuccin-github-file-explorer-icons-<version>-firefox.zip` asset from the latest release.
+1. Download the `catppuccin-github-file-explorer-icons-<version>-firefox.zip` asset from the [latest release](https://github.com/uncenter/ctp-github-file-explorer-icons/releases/latest/).
 3. In your browser, open the Add-ons page by navigating to `about:addons`.
 4. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
 5. Click the **Load Temporary Add-on...** button and select the zip file from step 1.
