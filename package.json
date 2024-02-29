@@ -1,6 +1,6 @@
 {
 	"name": "catppuccin-github-file-explorer-icons",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"description": "Soothing pastel icons for GitHub File Explorer",
 	"license": "MIT",
 	"dependencies": {
@@ -22,5 +22,6 @@
 		"zip:firefox": "wxt zip --browser firefox",
 		"postinstall": "wxt prepare"
 	},
-	"type": "module"
+	"type": "module",
+	"packageManager": "pnpm@8.15.4"
 }
