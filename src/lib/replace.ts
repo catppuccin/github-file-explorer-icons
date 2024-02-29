@@ -1,7 +1,8 @@
 import type { PublicPath } from 'wxt/browser';
+import type { IconName } from '@/lib/types';
 
-import { selectors } from './constants';
-import { associations } from '../vscode-icons.json';
+import { selectors } from '@/lib/constants';
+import { associations } from '@/vscode-icons.json';
 import { flavor } from '@/lib/storage';
 
 export async function replaceIconInRow(row: HTMLElement) {
@@ -26,6 +27,8 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 			.querySelector('a')
 			?.getAttribute('aria-label')
 			.includes('(Submodule)');
+	const isOpen =
+		isDir && icon.classList.contains('octicon-file-directory-open-fill');
 
 	const fileExtensions: string[] = [];
 	// Avoid doing an explosive combination of extensions for very long filenames
@@ -39,22 +42,25 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 
 	const iconName = lookForMatch(fileName, fileExtensions, isDir, isSubmodule);
 
-	await replaceElementWithIcon(icon, iconName, fileName);
+	await replaceElementWithIcon(
+		icon,
+		isOpen ? ((iconName + '_open') as IconName) : iconName,
+		fileName,
+	);
 }
 
 export async function replaceElementWithIcon(
 	icon: HTMLElement,
-	iconName: string,
+	iconName: IconName,
 	fileName: string,
 ) {
-	const svgFileName = `${await flavor.getValue()}/${iconName}.svg`;
-	if (!svgFileName) return;
-
 	const newSVG = document.createElement('img');
 	newSVG.setAttribute('data-catppuccin-extension', 'icon');
 	newSVG.setAttribute('data-catppuccin-extension-iconname', iconName);
 	newSVG.setAttribute('data-catppuccin-extension-filename', fileName);
-	newSVG.src = browser.runtime.getURL(svgFileName as PublicPath);
+	newSVG.src = browser.runtime.getURL(
+		`${await flavor.getValue()}/${iconName}.svg` as PublicPath,
+	);
 
 	icon
 		.getAttributeNames()
@@ -79,6 +85,13 @@ export async function replaceElementWithIcon(
 	else {
 		icon.style.display = 'none';
 		icon.before(newSVG);
+		new MutationObserver(function (mutations) {
+			if (newSVG.src.includes('_open')) {
+				newSVG.src = newSVG.src.replace('_open', '');
+			} else {
+				newSVG.src = newSVG.src.replace('.svg', '_open.svg');
+			}
+		}).observe(newSVG.parentElement, { childList: true });
 	}
 }
 
@@ -87,9 +100,10 @@ function lookForMatch(
 	fileExtensions: string[],
 	isDir: boolean,
 	isSubmodule: boolean,
-): string {
-	if (isSubmodule) return 'folder_git';
+): IconName {
 	if (fileName === '..') return '_folder';
+
+	if (isSubmodule) return 'folder_git';
 
 	if (!isDir) {
 		if (fileName in associations.fileNames)
@@ -118,7 +132,9 @@ export function replaceAllIcons() {
 	for (const icon of document.querySelectorAll(
 		'img[data-catppuccin-extension-iconname]',
 	) as NodeListOf<HTMLElement>) {
-		const iconName = icon.getAttribute('data-catppuccin-extension-iconname');
+		const iconName = icon.getAttribute(
+			'data-catppuccin-extension-iconname',
+		) as IconName;
 		const fileName = icon.getAttribute('data-catppuccin-extension-filename');
 		if (iconName && fileName) replaceElementWithIcon(icon, iconName, fileName);
 	}

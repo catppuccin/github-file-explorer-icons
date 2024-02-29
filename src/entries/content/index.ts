@@ -2,7 +2,7 @@ import { defineContentScript } from 'wxt/sandbox';
 import './styles.css';
 
 import { observe } from 'selector-observer';
-import { replaceAllIcons, replaceIconInRow } from '@/lib/replace-icon';
+import { replaceAllIcons, replaceIconInRow } from '@/lib/replace';
 import { selectors } from '@/lib/constants';
 import { flavor } from '@/lib/storage';
 

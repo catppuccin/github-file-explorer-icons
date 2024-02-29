@@ -1,4 +1,6 @@
-import { flavor, type Flavor } from '@/lib/storage';
+import type { Flavor } from '@/lib/types';
+
+import { flavor } from '@/lib/storage';
 
 async function init() {
 	const flavorEl = document.querySelector('#flavor') as HTMLSelectElement;
