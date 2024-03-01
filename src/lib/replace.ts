@@ -18,8 +18,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
-		icon.classList.contains('octicon-file-directory-fill') ||
-		icon.classList.contains('octicon-file-directory-open-fill') ||
+		icon.getAttribute('class')?.includes('octicon-file-directory-') ||
 		icon.classList.contains('icon-directory');
 	const isSubmodule =
 		icon.classList.contains('octicon-file-submodule') ||
@@ -40,7 +39,12 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 		}
 	}
 
-	const iconName = lookForMatch(fileName, fileExtensions, isDir, isSubmodule);
+	const iconName = findIconMatch(
+		fileName,
+		fileExtensions,
+		isDir,
+		isSubmodule,
+	);
 
 	await replaceElementWithIcon(
 		icon,
@@ -54,58 +58,81 @@ export async function replaceElementWithIcon(
 	iconName: IconName,
 	fileName: string,
 ) {
-	const newSVG = document.createElement('img');
-	newSVG.setAttribute('data-catppuccin-extension', 'icon');
-	newSVG.setAttribute('data-catppuccin-extension-iconname', iconName);
-	newSVG.setAttribute('data-catppuccin-extension-filename', fileName);
-	newSVG.src = browser.runtime.getURL(
+	const replacement = document.createElement('img');
+	replacement.setAttribute('data-catppuccin-extension', 'icon');
+	replacement.setAttribute('data-catppuccin-extension-iconname', iconName);
+	replacement.setAttribute('data-catppuccin-extension-filename', fileName);
+	replacement.src = browser.runtime.getURL(
 		`${await flavor.getValue()}/${iconName}.svg` as PublicPath,
 	);
 
-	icon
-		.getAttributeNames()
-		.forEach(
-			(attr) =>
-				attr !== 'src' &&
-				!/^data-catppuccin-extension/.test(attr) &&
-				newSVG.setAttribute(attr, icon.getAttribute(attr) as string),
-		);
+	icon.getAttributeNames().forEach(
+		(attr) =>
+			attr !== 'src' &&
+			!/^data-catppuccin-extension/.test(attr) &&
+			replacement.setAttribute(attr, icon.getAttribute(attr) as string),
+	);
 
 	const prevEl = icon.previousElementSibling;
 	if (prevEl?.getAttribute('data-catppuccin-extension') === 'icon') {
-		newSVG.replaceWith(prevEl);
+		replacement.replaceWith(prevEl);
 	}
 	// If the icon to replace is an icon from this extension, replace it with the new icon.
 	else if (icon.getAttribute('data-catppuccin-extension') === 'icon') {
-		icon.replaceWith(newSVG);
+		icon.replaceWith(replacement);
 	}
 	// If neither of the above, prepend the new icon in front of the original icon.
 	// If we remove the icon, GitHub code view crashes when you navigate through the
 	// tree view. Instead, we just hide it via `style` attribute (not CSS class).
 	else {
 		icon.style.display = 'none';
-		icon.before(newSVG);
-		new MutationObserver(function (mutations) {
-			if (newSVG.src.includes('_open')) {
-				newSVG.src = newSVG.src.replace('_open', '');
+		icon.before(replacement);
+	}
+	if (
+		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
+	) {
+		const button =
+			icon.parentElement.parentElement.parentElement
+				.previousElementSibling;
+		const row = button.parentElement;
+		button.addEventListener('click', () => {
+			if (replacement.src.includes('_open')) {
+				replacement.setAttribute('data-do-not-touch', 'true');
+				replacement.src = replacement.src.replace('_open', '');
 			} else {
-				newSVG.src = newSVG.src.replace('.svg', '_open.svg');
+				replacement.src = replacement.src.replace('.svg', '_open.svg');
 			}
-		}).observe(newSVG.parentElement, { childList: true });
+		});
+		row.addEventListener('click', () => {
+			if (
+				!replacement.src.includes('_open') &&
+				replacement.getAttribute('data-do-not-touch') !== 'true'
+			) {
+				replacement.src = replacement.src.replace('.svg', '_open.svg');
+			}
+		});
 	}
 }
 
-function lookForMatch(
+function findIconMatch(
 	fileName: string,
 	fileExtensions: string[],
 	isDir: boolean,
 	isSubmodule: boolean,
 ): IconName {
+	// Special parent directory folder icon:
 	if (fileName === '..') return '_folder';
 
 	if (isSubmodule) return 'folder_git';
 
-	if (!isDir) {
+	if (isDir) {
+		if (fileName in associations.folderNames)
+			return associations.folderNames[fileName];
+		if (fileName.toLowerCase() in associations.folderNames)
+			return associations.folderNames[fileName.toLowerCase()];
+
+		return '_folder';
+	} else {
 		if (fileName in associations.fileNames)
 			return associations.fileNames[fileName];
 		if (fileName.toLowerCase() in associations.fileNames)
@@ -114,17 +141,11 @@ function lookForMatch(
 		for (const ext of fileExtensions) {
 			if (ext in associations.fileExtensions)
 				return associations.fileExtensions[ext];
-			if (ext in associations.languageIds) return associations.languageIds[ext];
+			if (ext in associations.languageIds)
+				return associations.languageIds[ext];
 		}
 
 		return '_file';
-	} else {
-		if (fileName in associations.folderNames)
-			return associations.folderNames[fileName];
-		if (fileName.toLowerCase() in associations.folderNames)
-			return associations.folderNames[fileName.toLowerCase()];
-
-		return '_folder';
 	}
 }
 
@@ -135,7 +156,10 @@ export function replaceAllIcons() {
 		const iconName = icon.getAttribute(
 			'data-catppuccin-extension-iconname',
 		) as IconName;
-		const fileName = icon.getAttribute('data-catppuccin-extension-filename');
-		if (iconName && fileName) replaceElementWithIcon(icon, iconName, fileName);
+		const fileName = icon.getAttribute(
+			'data-catppuccin-extension-filename',
+		);
+		if (iconName && fileName)
+			replaceElementWithIcon(icon, iconName, fileName);
 	}
 }
