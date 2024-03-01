@@ -12,7 +12,8 @@ export default defineConfig({
 	manifest: {
 		name: 'Catppuccin for GitHub File Explorer Icons',
 		permissions: ['storage'],
-		homepage_url: 'https://github.com/catppuccin/github-file-explorer-icons',
+		homepage_url:
+			'https://github.com/catppuccin/github-file-explorer-icons',
 		web_accessible_resources: [
 			{
 				resources: ['*.svg'],
@@ -22,21 +23,31 @@ export default defineConfig({
 	},
 	hooks: {
 		'build:before': async () => {
-			// Copy icons:
-			const SRC = join(__dirname, './vscode-icons/icons/');
-			const DEST = join(__dirname, './src/public/');
-			if (await hfs.isDirectory(DEST)) await hfs.deleteAll(DEST);
+			const PUBLIC_DIR = join(__dirname, './src/public/');
+			if (await hfs.isDirectory(PUBLIC_DIR)) {
+				await hfs.deleteAll(PUBLIC_DIR);
+				await hfs.createDirectory(PUBLIC_DIR);
+			}
 
-			await hfs.createDirectory(DEST);
-			await hfs.copyAll(SRC, DEST);
-			await hfs.deleteAll(join(DEST, 'css-variables'));
+			// Copy icons:
+			await hfs.copyAll(
+				join(__dirname, './vscode-icons/icons/'),
+				PUBLIC_DIR,
+			);
+			await hfs.deleteAll(join(PUBLIC_DIR, 'css-variables'));
 
 			// Write assocations/config file:
 			await hfs.write(
 				join(__dirname, './src/vscode-icons.json'),
 				JSON.stringify(
-					jiti(__dirname)('./vscode-icons/src/defaults/index.ts').defaultConfig,
+					jiti(__dirname)('./vscode-icons/src/defaults/index.ts')
+						.defaultConfig,
 				),
+			);
+
+			await hfs.copyAll(
+				join(__dirname, './assets/icons'),
+				join(PUBLIC_DIR),
 			);
 		},
 	},
