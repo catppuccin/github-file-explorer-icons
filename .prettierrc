@@ -1,5 +1,14 @@
 {
 	"semi": true,
 	"singleQuote": true,
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": "**/*.{yml,yaml,md}",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
+		}
+	]
 }

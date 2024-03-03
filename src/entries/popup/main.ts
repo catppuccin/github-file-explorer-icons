@@ -8,7 +8,9 @@ async function init() {
 	flavorEl.addEventListener(
 		'change',
 		async ({ target }) =>
-			await flavor.setValue((target as HTMLSelectElement).value as Flavor),
+			await flavor.setValue(
+				(target as HTMLSelectElement).value as Flavor,
+			),
 	);
 }
 

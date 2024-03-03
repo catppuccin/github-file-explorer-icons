@@ -34,7 +34,8 @@ export default defineContentScript({
 		// Monitor DOM elements that match a CSS selector.
 		observe(selectors.row, {
 			add(row) {
-				const callback = async () => await replaceIconInRow(row as HTMLElement);
+				const callback = async () =>
+					await replaceIconInRow(row as HTMLElement);
 				rushFirst(90, callback);
 			},
 		});
