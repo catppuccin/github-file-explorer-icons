@@ -32,8 +32,11 @@ jobs:
           pnpm zip
           pnpm zip:firefox
 
+      - name: Write changelog
+        run: pnpm dlx changelogithub@latest --output CHANGELOG.md
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          generate_release_notes: true
+          body_path: CHANGELOG.md
           files: dist/*.zip

@@ -1,0 +1,9 @@
+{
+	"types": {
+		"feat": { "title": "🚀 Enhancements" },
+		"perf": { "title": "🔥 Performance" },
+		"fix": { "title": "🩹 Fixes" },
+		"refactor": { "title": "💅 Refactors" },
+		"docs": { "title": "📖 Documentation" }
+	}
+}
