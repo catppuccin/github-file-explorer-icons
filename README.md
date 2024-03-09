@@ -53,10 +53,21 @@
 
 ## Development
 
+### Setup
+
 ```bash
 git clone --recurse-submodules https://github.com/uncenter/ctp-github-file-explorer-icons.git && cd ctp-github-file-explorer-icons
 pnpm install
 ```
+
+### Usage
+
+To launch a browser instance with the extension loaded and a GitHub page already opened, run `pnpm dev` for Chrome or `pnpm dev:firefox` for Firefox. Please note that it takes a while to open since it re-copies all icons from the submodule to the public folder.
+
+To build the extension, run either:
+
+- `pnpm build`, where the compiled extension will be available at `dist/chrome-mv3`...
+- or `pnpm zip:firefox`, where the compiled and _zipped_ extension can be found at `dist/catppuccin-github-file-explorer-icons-<version>-firefox.zip`.
 
 ## 💝 Thanks to
 
