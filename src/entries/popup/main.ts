@@ -2,7 +2,7 @@ import './styles.css';
 
 import type { Associations, Flavor, IconName } from '@/lib/types';
 
-import { customAssociations, flavor } from '@/lib/storage';
+import { customAssociations, flavor, specificFolders } from '@/lib/storage';
 import { icons } from '@/lib/constants';
 
 async function init() {
@@ -11,10 +11,21 @@ async function init() {
 	flavorEl.value = await flavor.getValue();
 	document.documentElement.setAttribute('theme', flavorEl.value);
 
-	flavorEl.addEventListener('change', async ({ target }) => {
-		const value = (target as HTMLSelectElement).value as Flavor;
+	flavorEl.addEventListener('change', async () => {
+		const value = flavorEl.value as Flavor;
 		await flavor.setValue(value);
 		document.documentElement.setAttribute('theme', value);
+	});
+
+	const specificFoldersEl = document.querySelector(
+		'#specificFolders',
+	) as HTMLInputElement;
+	specificFoldersEl.checked = await specificFolders.getValue();
+
+	specificFoldersEl.addEventListener('change', async () => {
+		const value = specificFoldersEl.checked;
+		await specificFolders.setValue(value);
+		console.log('set value to', value);
 	});
 
 	const associations = await customAssociations.getValue();

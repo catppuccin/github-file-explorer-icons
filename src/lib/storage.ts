@@ -15,3 +15,8 @@ export const customAssociations = storage.defineItem<Associations>(
 		},
 	},
 );
+
+export const specificFolders = storage.defineItem<boolean>(
+	'local:specificFolders',
+	{ defaultValue: true },
+);

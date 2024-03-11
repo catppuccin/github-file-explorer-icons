@@ -2,7 +2,7 @@ import type { PublicPath } from 'wxt/browser';
 import type { IconName } from '@/lib/types';
 
 import { selectors } from '@/lib/constants';
-import { flavor } from '@/lib/storage';
+import { flavor, specificFolders } from '@/lib/storage';
 import { getAssociations } from './associations';
 
 export async function replaceIconInRow(row: HTMLElement) {
@@ -128,10 +128,12 @@ async function findIconMatch(
 	const associations = await getAssociations();
 
 	if (isDir) {
-		if (fileName in associations.folderNames)
-			return associations.folderNames[fileName];
-		if (fileName.toLowerCase() in associations.folderNames)
-			return associations.folderNames[fileName.toLowerCase()];
+		if (await specificFolders.getValue()) {
+			if (fileName in associations.folderNames)
+				return associations.folderNames[fileName];
+			if (fileName.toLowerCase() in associations.folderNames)
+				return associations.folderNames[fileName.toLowerCase()];
+		}
 
 		return '_folder';
 	} else {
