@@ -2,8 +2,8 @@ import type { PublicPath } from 'wxt/browser';
 import type { IconName } from '@/lib/types';
 
 import { selectors } from '@/lib/constants';
-import { associations } from '@/vscode-icons.json';
 import { flavor } from '@/lib/storage';
+import { getAssociations } from './associations';
 
 export async function replaceIconInRow(row: HTMLElement) {
 	const icon = row.querySelector(selectors.icon) as HTMLElement;
@@ -39,7 +39,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 		}
 	}
 
-	const iconName = findIconMatch(
+	const iconName = await findIconMatch(
 		fileName,
 		fileExtensions,
 		isDir,
@@ -114,16 +114,18 @@ export async function replaceElementWithIcon(
 	}
 }
 
-function findIconMatch(
+async function findIconMatch(
 	fileName: string,
 	fileExtensions: string[],
 	isDir: boolean,
 	isSubmodule: boolean,
-): IconName {
+): Promise<IconName> {
 	// Special parent directory folder icon:
 	if (fileName === '..') return '_folder';
 
 	if (isSubmodule) return 'folder_git';
+
+	const associations = await getAssociations();
 
 	if (isDir) {
 		if (fileName in associations.folderNames)

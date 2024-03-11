@@ -36,7 +36,7 @@ export default defineConfig({
 			);
 			await hfs.deleteAll(join(PUBLIC_DIR, 'css-variables'));
 
-			// Write assocations/config file:
+			// Write associations/config file:
 			await hfs.write(
 				join(__dirname, './src/vscode-icons.json'),
 				JSON.stringify(
