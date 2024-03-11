@@ -120,15 +120,15 @@ async function findIconMatch(
 	isDir: boolean,
 	isSubmodule: boolean,
 ): Promise<IconName> {
-	// Special parent directory folder icon:
+	// Special parent directory folder icon.
 	if (fileName === '..') return '_folder';
-
-	if (isSubmodule) return 'folder_git';
 
 	const associations = await getAssociations();
 
 	if (isDir) {
 		if (await specificFolders.getValue()) {
+			if (isSubmodule) return 'folder_git';
+
 			if (fileName in associations.folderNames)
 				return associations.folderNames[fileName];
 			if (fileName.toLowerCase() in associations.folderNames)
