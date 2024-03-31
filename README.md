@@ -43,7 +43,7 @@ Install via the [Chrome Web Store](https://chromewebstore.google.com/detail/catp
 ### Setup
 
 ```bash
-git clone --recurse-submodules https://github.com/uncenter/ctp-github-file-explorer-icons.git && cd ctp-github-file-explorer-icons
+git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git && cd github-file-explorer-icons
 pnpm install
 ```
 
