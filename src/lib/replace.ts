@@ -124,11 +124,12 @@ async function findIconMatch(
 	if (fileName === '..') return '_folder';
 
 	const associations = await getAssociations();
+	const useSpecificFolders = await specificFolders.getValue();
+
+	if (useSpecificFolders && isSubmodule) return 'folder_git';
 
 	if (isDir) {
-		if (await specificFolders.getValue()) {
-			if (isSubmodule) return 'folder_git';
-
+		if (useSpecificFolders) {
 			if (fileName in associations.folderNames)
 				return associations.folderNames[fileName];
 			if (fileName.toLowerCase() in associations.folderNames)
