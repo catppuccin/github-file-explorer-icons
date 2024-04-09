@@ -39,8 +39,7 @@ jobs:
           if [ "$upstream" != "$local" ]; then
             cd vscode-icons/
             git fetch
-            git merge origin/main
-            git reset --hard $upstream
+            git checkout "$upstream"
             echo "modified=1" >> "$GITHUB_OUTPUT"
           else
             echo "No difference between upstream and local tags"
