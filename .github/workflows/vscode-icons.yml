@@ -1,0 +1,32 @@
+name: Update vscode-icons Submodule
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Update submodule
+        id: update_submodule
+        run: |
+          cd vscode-icons/
+          git fetch --tags
+          git submodule update
+          tag=$(git describe --abbrev=0 --tags)
+          echo "latest_tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'feat: update vscode-icons submodule to ${{ steps.update_submodule.outputs.latest_tag }}'
+          branch: 'feat/update-vscode-icons-${{ steps.update_submodule.outputs.latest_tag }}'
+          title: 'feat: update vscode-icons submodule to ${{ steps.update_submodule.outputs.latest_tag }}'
+          body: |
+            This automated PR updates the [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons) submodule to  ${{ steps.update_submodule.outputs.latest_tag }}.
