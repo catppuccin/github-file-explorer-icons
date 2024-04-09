@@ -36,7 +36,34 @@
 
 ## Usage
 
-Install via the [Chrome Web Store](https://chromewebstore.google.com/detail/catppuccin-for-github-fil/lnjaiaapbakfhlbjenjkhffcdpoompki) or [Firefox Addons](https://addons.mozilla.org/en-US/firefox/addon/catppuccin-gh-file-explorer/).
+The extension is available on the Chrome Web Store, Firefox Add-ons, and Microsoft Edge Add-ons extension stores. Click on your browser's badge below to install.
+
+<p align="center">
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/catppuccin-gh-file-explorer/"><img src="https://img.shields.io/badge/Firefox_Add--ons-f5a97f?style=for-the-badge&logo=Firefox-Browser&logoColor=white"></a>
+  <a href="https://chromewebstore.google.com/detail/catppuccin-for-github-fil/lnjaiaapbakfhlbjenjkhffcdpoompki"><img src="https://img.shields.io/badge/Chrome_Web_Store-b7bdf8?style=for-the-badge&logo=GoogleChrome&logoColor=white"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Microsoft_Edge_Add--ons-7dc4e4?style=for-the-badge&logo=Microsoft-edge&logoColor=white"></a>
+</p>
+
+### Manually
+
+```bash
+git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git && cd github-file-explorer-icons
+pnpm install
+```
+
+#### Chrome
+
+1. Run `pnpm build`.
+1. Open the Extensions page by navigating to `chrome://extensions`.
+1. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
+1. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
+
+#### Firefox
+
+1. Run `pnpm zip:firefox`.
+1. Open the Add-ons page by navigating to `about:addons`.
+1. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
+1. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-icons-extension-<version>-firefox.zip` file from the cloned repository.
 
 ## Development
 
