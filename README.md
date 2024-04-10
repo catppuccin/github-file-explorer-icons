@@ -47,7 +47,12 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
 ### Manually
 
 ```bash
-git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git && cd github-file-explorer-icons
+git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
+```
+```bash
+cd github-file-explorer-icons
+```
+```bash
 pnpm install
 ```
 
@@ -70,7 +75,12 @@ pnpm install
 ### Setup
 
 ```bash
-git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git && cd github-file-explorer-icons
+git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
+```
+```bash
+cd github-file-explorer-icons
+```
+```bash
 pnpm install
 ```
 
