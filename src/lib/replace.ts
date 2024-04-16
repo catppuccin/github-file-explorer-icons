@@ -22,9 +22,13 @@ ${flavors[await flavor.getValue()].colorEntries
 }
 /* Hide folder open/closed icons from new code view tree when clicked by disabling
    display of those icons when they immediately follow the replaced icon. */
-svg[${ATTRIBUTE_PREFIX}='icon'] + svg.octicon-file-directory-open-fill,
-svg[${ATTRIBUTE_PREFIX}='icon'] + svg.octicon-file-directory-fill {
+.PRIVATE_TreeView-directory-icon svg {
 	display: none !important;
+}
+svg[${ATTRIBUTE_PREFIX}-iconname$='_open']:has(~ svg.octicon-file-directory-open-fill:not([data-catppuccin-file-explorer-icons])),
+svg:not([${ATTRIBUTE_PREFIX}-iconname$='_open']):has(~ svg.octicon-file-directory-fill:not([data-catppuccin-file-explorer-icons])),
+svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
+	display: inline-block !important;
 }
 `;
 }
@@ -87,7 +91,7 @@ export async function replaceElementWithIcon(
 		'svg',
 	);
 	replacement.innerHTML = icons[iconName];
-	replacement.setAttribute(ATTRIBUTE_PREFIX, 'icon');
+	replacement.setAttribute(ATTRIBUTE_PREFIX, '');
 	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
@@ -101,11 +105,11 @@ export async function replaceElementWithIcon(
 	}
 
 	const prevEl = icon.previousElementSibling;
-	if (prevEl?.getAttribute(ATTRIBUTE_PREFIX) === 'icon') {
+	if (prevEl?.hasAttribute(ATTRIBUTE_PREFIX)) {
 		replacement.replaceWith(prevEl);
 	}
 	// If the icon to replace is an icon from this extension, replace it with the new icon.
-	else if (icon.getAttribute(ATTRIBUTE_PREFIX) === 'icon') {
+	else if (icon.hasAttribute(ATTRIBUTE_PREFIX)) {
 		icon.replaceWith(replacement);
 	}
 	// If neither of the above, prepend the new icon in front of the original icon.
@@ -118,32 +122,30 @@ export async function replaceElementWithIcon(
 	if (
 		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
 	) {
-		const button =
-			icon.parentElement.parentElement.parentElement
-				.previousElementSibling;
-		const row = button.parentElement;
-		button.addEventListener('click', () => {
-			const iconName = replacement.getAttribute(
-				`${ATTRIBUTE_PREFIX}-iconname`,
-			);
-			if (iconName.includes('_open')) {
-				replacement.setAttribute('data-do-not-touch', 'true');
-				replacement.innerHTML = icons[iconName.replace('_open', '')];
-			} else {
-				replacement.innerHTML = icons[iconName + '_open'];
+		let companion = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'svg',
+		);
+		iconName = (
+			iconName.includes('_open')
+				? iconName.replace('_open', '')
+				: iconName + '_open'
+		) as IconName;
+		companion.innerHTML = icons[iconName];
+		companion.setAttribute(ATTRIBUTE_PREFIX, '');
+		companion.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
+		companion.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
+
+		for (const attribute of icon.getAttributeNames()) {
+			if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
+				companion.setAttribute(
+					attribute,
+					icon.getAttribute(attribute) as string,
+				);
 			}
-		});
-		row.addEventListener('click', () => {
-			const iconName = replacement.getAttribute(
-				`${ATTRIBUTE_PREFIX}-iconname`,
-			);
-			if (
-				!iconName.includes('_open') &&
-				replacement.getAttribute('data-do-not-touch') !== 'true'
-			) {
-				replacement.innerHTML = icons[iconName + '_open'];
-			}
-		});
+		}
+
+		replacement.after(companion);
 	}
 }
 
