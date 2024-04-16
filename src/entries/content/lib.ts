@@ -40,7 +40,7 @@ async function createIconElement(
 	if (await monochrome.getValue()) {
 		svg.innerHTML = icons[iconName].replaceAll(
 			/var\(--ctp-\w+\)/g,
-			flavors[await flavor.getValue()].colors.text.hex,
+			'var(--ctp-text)',
 		);
 	} else {
 		svg.innerHTML = icons[iconName];
