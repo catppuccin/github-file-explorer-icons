@@ -1,9 +1,14 @@
+import type { IconName } from '@/lib/types';
+
 import { defineContentScript } from 'wxt/sandbox';
-import './styles.css';
 
 import { observe } from 'selector-observer';
-import { replaceAllIcons, replaceIconInRow } from '@/lib/replace';
-import { selectors } from '@/lib/constants';
+import {
+	replaceElementWithIcon,
+	replaceIconInRow,
+	setCssVariables,
+} from '@/lib/replace';
+import { ATTRIBUTE_PREFIX, selectors } from '@/lib/constants';
 import { flavor } from '@/lib/storage';
 
 export default defineContentScript({
@@ -40,8 +45,19 @@ export default defineContentScript({
 			},
 		});
 		// Monitor the flavor changing.
-		flavor.watch(replaceAllIcons);
+		flavor.watch(setCssVariables);
 
-		replaceAllIcons();
+		setCssVariables();
+
+		for (const icon of document.querySelectorAll(
+			`svg[${ATTRIBUTE_PREFIX}-iconname]`,
+		) as NodeListOf<HTMLElement>) {
+			const iconName = icon.getAttribute(
+				`${ATTRIBUTE_PREFIX}-iconname`,
+			) as IconName;
+			const fileName = icon.getAttribute(`${ATTRIBUTE_PREFIX}-filename`);
+			if (iconName && fileName)
+				replaceElementWithIcon(icon, iconName, fileName);
+		}
 	},
 });

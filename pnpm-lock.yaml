@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@catppuccin/palette':
+    specifier: 1.1.1
+    version: 1.1.1
   selector-observer:
     specifier: 2.1.6
     version: 2.1.6
@@ -13,6 +16,9 @@ devDependencies:
   '@humanfs/node':
     specifier: 0.14.0
     version: 0.14.0
+  '@humanfs/types':
+    specifier: 0.13.0
+    version: 0.13.0
   jiti:
     specifier: 1.21.0
     version: 1.21.0
@@ -69,6 +75,10 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.1
     dev: true
+
+  /@catppuccin/palette@1.1.1:
+    resolution: {integrity: sha512-wgITbl3OEIUnv8WPTdG2BGjepSMZtJW9V4XpxNDJjCvel0Q5+BxRmKH3XYN0vVjohHR+APCyZCpzSnO+GdsTLg==}
+    dev: false
 
   /@devicefarmer/adbkit-logcat@2.1.3:
     resolution: {integrity: sha512-yeaGFjNBc/6+svbDeul1tNHtNChw6h8pSHAt5D+JsedUrMTN7tla7B15WLDyekxsuS2XlZHRxpuC6m92wiwCNw==}
@@ -314,6 +324,11 @@ packages:
     dependencies:
       '@humanfs/core': 0.14.0
       '@humanwhocodes/retry': 0.1.2
+    dev: true
+
+  /@humanfs/types@0.13.0:
+    resolution: {integrity: sha512-3QDsfgPh0XN4D5Wg89cmswDJWLtZI4iqt7N0MrRbJBfpE9LrTYMwNKHkfZupyN531hhYPsDOtCHhHhF75LWOrg==}
+    engines: {node: '>=18.18.0'}
     dev: true
 
   /@humanwhocodes/retry@0.1.2:

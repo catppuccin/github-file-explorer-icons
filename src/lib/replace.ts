@@ -1,13 +1,37 @@
-import type { PublicPath } from 'wxt/browser';
 import type { IconName } from '@/lib/types';
 
-import { selectors } from '@/lib/constants';
+import { ATTRIBUTE_PREFIX, selectors } from '@/lib/constants';
 import { flavor, specificFolders } from '@/lib/storage';
 import { getAssociations } from './associations';
+import { flavors } from '@catppuccin/palette';
+
+import icons from '@/icons.json';
+
+export async function setCssVariables() {
+	let styles = document.querySelector('#catppuccin-icons-css-variables');
+	if (!styles) {
+		styles = document.createElement('style');
+		styles.setAttribute('id', 'catppuccin-icons-css-variables');
+		document.documentElement.appendChild(styles);
+	}
+
+	styles.textContent = `:root {
+${flavors[await flavor.getValue()].colorEntries
+	.map(([name, { hex }]) => `  --ctp-${name}: ${hex};`)
+	.join('\n')}
+}
+/* Hide folder open/closed icons from new code view tree when clicked by disabling
+   display of those icons when they immediately follow the replaced icon. */
+svg[${ATTRIBUTE_PREFIX}='icon'] + svg.octicon-file-directory-open-fill,
+svg[${ATTRIBUTE_PREFIX}='icon'] + svg.octicon-file-directory-fill {
+	display: none !important;
+}
+`;
+}
 
 export async function replaceIconInRow(row: HTMLElement) {
 	const icon = row.querySelector(selectors.icon) as HTMLElement;
-	if (icon && !icon?.hasAttribute('data-catppuccin-extension'))
+	if (icon && !icon?.hasAttribute(ATTRIBUTE_PREFIX))
 		await replaceIcon(icon, row);
 }
 
@@ -58,27 +82,25 @@ export async function replaceElementWithIcon(
 	iconName: IconName,
 	fileName: string,
 ) {
-	const replacement = document.createElement('img');
-	replacement.setAttribute('data-catppuccin-extension', 'icon');
-	replacement.setAttribute('data-catppuccin-extension-iconname', iconName);
-	replacement.setAttribute('data-catppuccin-extension-filename', fileName);
-	replacement.src = browser.runtime.getURL(
-		`${await flavor.getValue()}/${iconName}.svg` as PublicPath,
-	);
+	let replacement = document.createElement('svg');
+	replacement.innerHTML = icons[iconName];
+	replacement.setAttribute(ATTRIBUTE_PREFIX, 'icon');
+	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
+	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
 	icon.getAttributeNames().forEach(
 		(attr) =>
 			attr !== 'src' &&
-			!/^data-catppuccin-extension/.test(attr) &&
+			!attr.startsWith(ATTRIBUTE_PREFIX) &&
 			replacement.setAttribute(attr, icon.getAttribute(attr) as string),
 	);
 
 	const prevEl = icon.previousElementSibling;
-	if (prevEl?.getAttribute('data-catppuccin-extension') === 'icon') {
+	if (prevEl?.getAttribute(ATTRIBUTE_PREFIX) === 'icon') {
 		replacement.replaceWith(prevEl);
 	}
 	// If the icon to replace is an icon from this extension, replace it with the new icon.
-	else if (icon.getAttribute('data-catppuccin-extension') === 'icon') {
+	else if (icon.getAttribute(ATTRIBUTE_PREFIX) === 'icon') {
 		icon.replaceWith(replacement);
 	}
 	// If neither of the above, prepend the new icon in front of the original icon.
@@ -96,19 +118,25 @@ export async function replaceElementWithIcon(
 				.previousElementSibling;
 		const row = button.parentElement;
 		button.addEventListener('click', () => {
-			if (replacement.src.includes('_open')) {
+			const iconName = replacement.getAttribute(
+				`${ATTRIBUTE_PREFIX}-iconname`,
+			);
+			if (iconName.includes('_open')) {
 				replacement.setAttribute('data-do-not-touch', 'true');
-				replacement.src = replacement.src.replace('_open', '');
+				replacement.innerHTML = icons[iconName.replace('_open', '')];
 			} else {
-				replacement.src = replacement.src.replace('.svg', '_open.svg');
+				replacement.innerHTML = icons[iconName + '_open'];
 			}
 		});
 		row.addEventListener('click', () => {
+			const iconName = replacement.getAttribute(
+				`${ATTRIBUTE_PREFIX}-iconname`,
+			);
 			if (
-				!replacement.src.includes('_open') &&
+				!iconName.includes('_open') &&
 				replacement.getAttribute('data-do-not-touch') !== 'true'
 			) {
-				replacement.src = replacement.src.replace('.svg', '_open.svg');
+				replacement.innerHTML = icons[iconName + '_open'];
 			}
 		});
 	}
@@ -151,20 +179,5 @@ async function findIconMatch(
 		}
 
 		return '_file';
-	}
-}
-
-export function replaceAllIcons() {
-	for (const icon of document.querySelectorAll(
-		'img[data-catppuccin-extension-iconname]',
-	) as NodeListOf<HTMLElement>) {
-		const iconName = icon.getAttribute(
-			'data-catppuccin-extension-iconname',
-		) as IconName;
-		const fileName = icon.getAttribute(
-			'data-catppuccin-extension-filename',
-		);
-		if (iconName && fileName)
-			replaceElementWithIcon(icon, iconName, fileName);
 	}
 }

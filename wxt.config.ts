@@ -14,40 +14,40 @@ export default defineConfig({
 		permissions: ['storage'],
 		homepage_url:
 			'https://github.com/catppuccin/github-file-explorer-icons',
-		web_accessible_resources: [
-			{
-				resources: ['*.svg'],
-				matches: ['*://github.com/*'],
-			},
-		],
 	},
 	hooks: {
 		'build:before': async () => {
-			const PUBLIC_DIR = join(__dirname, './src/public/');
-			if (await hfs.isDirectory(PUBLIC_DIR)) {
-				await hfs.deleteAll(PUBLIC_DIR);
-				await hfs.createDirectory(PUBLIC_DIR);
+			const ICON_DIR = join(
+				__dirname,
+				'./vscode-icons/icons/css-variables/',
+			);
+			const icons = {};
+
+			for await (const entry of hfs.list(ICON_DIR)) {
+				icons[entry.name.replace('.svg', '')] = await hfs
+					.text(join(ICON_DIR, entry.name))
+					.then((text) => {
+						const lines = text.split('\n');
+						return lines
+							.slice(1, lines.length - 2)
+							.join('\n')
+							.trim()
+							.replaceAll('--vscode-ctp', '--ctp')
+							.replaceAll('/>', '></path>');
+					});
 			}
 
-			// Copy icons:
-			await hfs.copyAll(
-				join(__dirname, './vscode-icons/icons/'),
-				PUBLIC_DIR,
-			);
-			await hfs.deleteAll(join(PUBLIC_DIR, 'css-variables'));
-
-			// Write associations/config file:
 			await hfs.write(
-				join(__dirname, './src/vscode-icons.json'),
+				join(__dirname, './src/icons.json'),
+				JSON.stringify(icons),
+			);
+
+			await hfs.write(
+				join(__dirname, './src/associations.json'),
 				JSON.stringify(
 					jiti(__dirname)('./vscode-icons/src/defaults/index.ts')
-						.defaultConfig,
+						.defaultConfig.associations,
 				),
-			);
-
-			await hfs.copyAll(
-				join(__dirname, './assets/icons'),
-				join(PUBLIC_DIR),
 			);
 		},
 	},
