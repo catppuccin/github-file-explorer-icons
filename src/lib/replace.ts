@@ -82,18 +82,23 @@ export async function replaceElementWithIcon(
 	iconName: IconName,
 	fileName: string,
 ) {
-	let replacement = document.createElement('svg');
+	let replacement = document.createElementNS(
+		'http://www.w3.org/2000/svg',
+		'svg',
+	);
 	replacement.innerHTML = icons[iconName];
 	replacement.setAttribute(ATTRIBUTE_PREFIX, 'icon');
 	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
-	icon.getAttributeNames().forEach(
-		(attr) =>
-			attr !== 'src' &&
-			!attr.startsWith(ATTRIBUTE_PREFIX) &&
-			replacement.setAttribute(attr, icon.getAttribute(attr) as string),
-	);
+	for (const attribute of icon.getAttributeNames()) {
+		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
+			replacement.setAttribute(
+				attribute,
+				icon.getAttribute(attribute) as string,
+			);
+		}
+	}
 
 	const prevEl = icon.previousElementSibling;
 	if (prevEl?.getAttribute(ATTRIBUTE_PREFIX) === 'icon') {
