@@ -44,20 +44,10 @@ export default defineContentScript({
 				rushFirst(90, callback);
 			},
 		});
+
 		// Monitor the flavor changing.
 		flavor.watch(setCssVariables);
 
 		setCssVariables();
-
-		for (const icon of document.querySelectorAll(
-			`svg[${ATTRIBUTE_PREFIX}-iconname]`,
-		) as NodeListOf<HTMLElement>) {
-			const iconName = icon.getAttribute(
-				`${ATTRIBUTE_PREFIX}-iconname`,
-			) as IconName;
-			const fileName = icon.getAttribute(`${ATTRIBUTE_PREFIX}-filename`);
-			if (iconName && fileName)
-				replaceElementWithIcon(icon, iconName, fileName);
-		}
 	},
 });
