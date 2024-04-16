@@ -1,7 +1,8 @@
 import type { Associations } from './types';
 
-import { associations as json } from '@/vscode-icons.json';
 import { customAssociations } from './storage';
+
+import json from '@/associations.json';
 
 export async function getAssociations(): Promise<Associations> {
 	const custom = await customAssociations.getValue();

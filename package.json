@@ -4,10 +4,12 @@
 	"description": "Soothing pastel icons for GitHub File Explorer",
 	"license": "MIT",
 	"dependencies": {
+		"@catppuccin/palette": "1.1.1",
 		"selector-observer": "2.1.6"
 	},
 	"devDependencies": {
 		"@humanfs/node": "0.14.0",
+		"@humanfs/types": "0.13.0",
 		"jiti": "1.21.0",
 		"prettier": "3.2.5",
 		"wxt": "0.17.3"

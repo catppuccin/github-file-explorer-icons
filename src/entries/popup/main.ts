@@ -1,11 +1,29 @@
 import './styles.css';
 
-import type { Associations, Flavor, IconName } from '@/lib/types';
+import type { Associations, Flavor, IconName } from '@/types';
 
-import { customAssociations, flavor, specificFolders } from '@/lib/storage';
-import { icons } from '@/lib/constants';
+import { flavor, specificFolders, customAssociations } from '@/storage';
+import { icons } from '@/constants';
+import { createStylesElement } from '@/utils';
+
+import { flavorEntries } from '@catppuccin/palette';
+
+function injectStyles() {
+	const styles = createStylesElement();
+
+	styles.textContent = flavorEntries
+		.map(
+			([flavor, { colorEntries }]) =>
+				`:root[theme="${flavor}"] {\n${colorEntries.map(([name, { hex }]) => `  --ctp-${name}: ${hex};`).join('\n')}\n}`,
+		)
+		.join('\n');
+
+	document.documentElement.appendChild(styles);
+}
 
 async function init() {
+	injectStyles();
+
 	const flavorEl = document.querySelector('#flavor') as HTMLSelectElement;
 
 	flavorEl.value = await flavor.getValue();
