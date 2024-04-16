@@ -1,7 +1,7 @@
 import type { IconName } from '@/types';
 
 import { ATTRIBUTE_PREFIX, SELECTORS } from '@/constants';
-import { flavor, specificFolders } from '@/storage';
+import { flavor, monochrome, specificFolders } from '@/storage';
 import { getAssociations } from '@/associations';
 import { createStylesElement } from '@/utils';
 
@@ -31,13 +31,20 @@ svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
 `.trim();
 }
 
-function createIconElement(
+async function createIconElement(
 	iconName: IconName,
 	fileName: string,
 	originalIcon: HTMLElement,
-): SVGSVGElement {
+): Promise<SVGSVGElement> {
 	let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-	svg.innerHTML = icons[iconName];
+	if (await monochrome.getValue()) {
+		svg.innerHTML = icons[iconName].replaceAll(
+			/var\(--ctp-\w+\)/g,
+			flavors[await flavor.getValue()].colors.text.hex,
+		);
+	} else {
+		svg.innerHTML = icons[iconName];
+	}
 	svg.setAttribute(ATTRIBUTE_PREFIX, '');
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
@@ -107,7 +114,7 @@ export async function replaceElementWithIcon(
 	iconName: IconName,
 	fileName: string,
 ) {
-	const replacement = createIconElement(iconName, fileName, icon);
+	const replacement = await createIconElement(iconName, fileName, icon);
 
 	const prevEl = icon.previousElementSibling;
 	if (prevEl?.hasAttribute(ATTRIBUTE_PREFIX)) {
@@ -128,7 +135,7 @@ export async function replaceElementWithIcon(
 	if (
 		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
 	) {
-		let companion = createIconElement(
+		let companion = await createIconElement(
 			(iconName.includes('_open')
 				? iconName.replace('_open', '')
 				: iconName + '_open') as IconName,
