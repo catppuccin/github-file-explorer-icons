@@ -1,48 +1,69 @@
-import type { IconName } from '@/lib/types';
+import type { IconName } from '@/types';
 
-import { ATTRIBUTE_PREFIX, selectors } from '@/lib/constants';
-import { flavor, specificFolders } from '@/lib/storage';
-import { getAssociations } from './associations';
+import { ATTRIBUTE_PREFIX, SELECTORS } from '@/constants';
+import { flavor, specificFolders } from '@/storage';
+import { getAssociations } from '@/associations';
+import { createStylesElement } from '@/utils';
+
 import { flavors } from '@catppuccin/palette';
 
 import icons from '@/icons.json';
 
-export async function setCssVariables() {
-	let styles = document.querySelector('#catppuccin-icons-css-variables');
-	if (!styles) {
-		styles = document.createElement('style');
-		styles.setAttribute('id', 'catppuccin-icons-css-variables');
-		document.documentElement.appendChild(styles);
-	}
+export async function injectStyles() {
+	const styles = createStylesElement();
 
-	styles.textContent = `:root {
-${flavors[await flavor.getValue()].colorEntries
-	.map(([name, { hex }]) => `  --ctp-${name}: ${hex};`)
-	.join('\n')}
+	styles.textContent = /* css */ `
+:root {
+  ${flavors[await flavor.getValue()].colorEntries
+		.map(([name, { hex }]) => `--ctp-${name}: ${hex};`)
+		.join('\n  ')}
 }
-/* Hide folder open/closed icons from new code view tree when clicked by disabling
-   display of those icons when they immediately follow the replaced icon. */
+
 .PRIVATE_TreeView-directory-icon svg {
 	display: none !important;
 }
+
 svg[${ATTRIBUTE_PREFIX}-iconname$='_open']:has(~ svg.octicon-file-directory-open-fill:not([data-catppuccin-file-explorer-icons])),
 svg:not([${ATTRIBUTE_PREFIX}-iconname$='_open']):has(~ svg.octicon-file-directory-fill:not([data-catppuccin-file-explorer-icons])),
 svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
 	display: inline-block !important;
 }
-`;
+`.trim();
+}
+
+function createIconElement(
+	iconName: IconName,
+	fileName: string,
+	originalIcon: HTMLElement,
+): SVGSVGElement {
+	let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	svg.innerHTML = icons[iconName];
+	svg.setAttribute(ATTRIBUTE_PREFIX, '');
+	svg.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
+	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
+
+	for (const attribute of originalIcon.getAttributeNames()) {
+		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
+			svg.setAttribute(
+				attribute,
+				originalIcon.getAttribute(attribute) as string,
+			);
+		}
+	}
+
+	return svg;
 }
 
 export async function replaceIconInRow(row: HTMLElement) {
-	const icon = row.querySelector(selectors.icon) as HTMLElement;
+	const icon = row.querySelector(SELECTORS.icon) as HTMLElement;
 	if (icon && !icon?.hasAttribute(ATTRIBUTE_PREFIX))
 		await replaceIcon(icon, row);
 }
 
 export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
-	const fileNameEl = row.querySelector(selectors.filename) as HTMLElement;
+	const fileNameEl = row.querySelector(SELECTORS.filename) as HTMLElement;
 	if (!fileNameEl) return;
-	const fileName = fileNameEl.textContent?.split('/')[0].trim();
+	const fileName = fileNameEl.textContent?.split('/').at(0).trim();
 
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
@@ -86,23 +107,7 @@ export async function replaceElementWithIcon(
 	iconName: IconName,
 	fileName: string,
 ) {
-	let replacement = document.createElementNS(
-		'http://www.w3.org/2000/svg',
-		'svg',
-	);
-	replacement.innerHTML = icons[iconName];
-	replacement.setAttribute(ATTRIBUTE_PREFIX, '');
-	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
-	replacement.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
-
-	for (const attribute of icon.getAttributeNames()) {
-		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
-			replacement.setAttribute(
-				attribute,
-				icon.getAttribute(attribute) as string,
-			);
-		}
-	}
+	const replacement = createIconElement(iconName, fileName, icon);
 
 	const prevEl = icon.previousElementSibling;
 	if (prevEl?.hasAttribute(ATTRIBUTE_PREFIX)) {
@@ -119,31 +124,17 @@ export async function replaceElementWithIcon(
 		icon.style.display = 'none';
 		icon.before(replacement);
 	}
+
 	if (
 		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
 	) {
-		let companion = document.createElementNS(
-			'http://www.w3.org/2000/svg',
-			'svg',
-		);
-		iconName = (
-			iconName.includes('_open')
+		let companion = createIconElement(
+			(iconName.includes('_open')
 				? iconName.replace('_open', '')
-				: iconName + '_open'
-		) as IconName;
-		companion.innerHTML = icons[iconName];
-		companion.setAttribute(ATTRIBUTE_PREFIX, '');
-		companion.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
-		companion.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
-
-		for (const attribute of icon.getAttributeNames()) {
-			if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
-				companion.setAttribute(
-					attribute,
-					icon.getAttribute(attribute) as string,
-				);
-			}
-		}
+				: iconName + '_open') as IconName,
+			fileName,
+			icon,
+		);
 
 		replacement.after(companion);
 	}

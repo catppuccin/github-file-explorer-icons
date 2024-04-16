@@ -1,15 +1,10 @@
-import type { IconName } from '@/lib/types';
-
 import { defineContentScript } from 'wxt/sandbox';
 
 import { observe } from 'selector-observer';
-import {
-	replaceElementWithIcon,
-	replaceIconInRow,
-	setCssVariables,
-} from '@/lib/replace';
-import { ATTRIBUTE_PREFIX, selectors } from '@/lib/constants';
-import { flavor } from '@/lib/storage';
+
+import { SELECTORS } from '@/constants';
+import { flavor } from '@/storage';
+import { replaceIconInRow, injectStyles } from './lib';
 
 export default defineContentScript({
 	matches: ['*://github.com/*'],
@@ -21,7 +16,7 @@ export default defineContentScript({
 		// Here we compromise, rushing the first n replacements to prevent blinks that will likely be "above the fold"
 		// and delaying the replacement of subsequent rows.
 		let executions = 0;
-		let timerID;
+		let timerID: NodeJS.Timeout;
 		const rushFirst = (rushBatch: number, callback: () => void) => {
 			if (executions <= rushBatch) {
 				callback(); // Immediately run to prevent visual "blink".
@@ -37,7 +32,7 @@ export default defineContentScript({
 		};
 
 		// Monitor DOM elements that match a CSS selector.
-		observe(selectors.row, {
+		observe(SELECTORS.row, {
 			add(row) {
 				const callback = async () =>
 					await replaceIconInRow(row as HTMLElement);
@@ -45,9 +40,7 @@ export default defineContentScript({
 			},
 		});
 
-		// Monitor the flavor changing.
-		flavor.watch(setCssVariables);
-
-		setCssVariables();
+		flavor.watch(injectStyles);
+		injectStyles();
 	},
 });

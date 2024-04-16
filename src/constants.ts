@@ -1,4 +1,4 @@
-export const selectors = {
+export const SELECTORS = {
 	row: `.js-navigation-container[role=grid] > .js-navigation-item,
     file-tree .ActionList-content,
     a.tree-browser-result,
