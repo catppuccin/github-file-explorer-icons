@@ -7,13 +7,13 @@ body {
 	flex-direction: column;
 	gap: 0.5rem;
 
-	background-color: var(--ctp-base);
+	background-color: var(--ctp-mantle);
 	color: var(--ctp-text) !important;
 }
 
 select,
 input {
-	background-color: var(--ctp-base);
+	background-color: var(--ctp-crust);
 	color: var(--ctp-text) !important;
 	border: none;
 	border-radius: 0.25rem;
@@ -62,7 +62,7 @@ input[type='checkbox']:checked::before {
 section {
 	padding: 1rem;
 	border-radius: 0.25rem;
-	background-color: var(--ctp-surface0);
+	background-color: var(--ctp-base);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
