@@ -2,7 +2,12 @@ import './styles.css';
 
 import type { Associations, Flavor, IconName } from '@/types';
 
-import { flavor, specificFolders, customAssociations } from '@/storage';
+import {
+	flavor,
+	monochrome,
+	specificFolders,
+	customAssociations,
+} from '@/storage';
 import { icons } from '@/constants';
 import { createStylesElement } from '@/utils';
 
@@ -35,16 +40,17 @@ async function init() {
 		document.documentElement.setAttribute('theme', value);
 	});
 
-	const specificFoldersEl = document.querySelector(
-		'#specificFolders',
-	) as HTMLInputElement;
-	specificFoldersEl.checked = await specificFolders.getValue();
-
-	specificFoldersEl.addEventListener('change', async () => {
-		const value = specificFoldersEl.checked;
-		await specificFolders.setValue(value);
-		console.log('set value to', value);
-	});
+	for (const [selector, storage] of Object.entries({
+		specificFolders: specificFolders,
+		monochrome: monochrome,
+	})) {
+		const el = document.querySelector(`#${selector}`) as HTMLInputElement;
+		el.checked = await storage.getValue();
+		el.addEventListener('change', async () => {
+			const value = el.checked;
+			await storage.setValue(value);
+		});
+	}
 
 	const associations = await customAssociations.getValue();
 

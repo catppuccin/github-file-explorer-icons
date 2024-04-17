@@ -20,3 +20,7 @@ export const specificFolders = storage.defineItem<boolean>(
 	'local:specificFolders',
 	{ defaultValue: true },
 );
+
+export const monochrome = storage.defineItem<boolean>('local:monochrome', {
+	defaultValue: false,
+});
