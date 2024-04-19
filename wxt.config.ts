@@ -2,6 +2,7 @@ import { defineConfig } from 'wxt';
 
 import { hfs } from '@humanfs/node';
 import { join } from 'path';
+import { optimize } from 'svgo';
 
 import jiti from 'jiti';
 
@@ -27,13 +28,17 @@ export default defineConfig({
 				icons[entry.name.replace('.svg', '')] = await hfs
 					.text(join(ICON_DIR, entry.name))
 					.then((text) => {
-						const lines = text.split('\n');
-						return lines
-							.slice(1, lines.length - 2)
-							.join('\n')
-							.trim()
-							.replaceAll('--vscode-ctp', '--ctp')
-							.replaceAll('/>', '></path>');
+						return optimize(
+							text.replaceAll('--vscode-ctp', '--ctp'),
+							{
+								js2svg: { useShortTags: false },
+							},
+						)
+							.data.replace(
+								'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">',
+								'',
+							)
+							.replace('</svg>', '');
 					});
 			}
 
