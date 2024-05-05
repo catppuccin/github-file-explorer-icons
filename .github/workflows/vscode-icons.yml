@@ -20,10 +20,10 @@ jobs:
       - name: Update submodule
         id: update_submodule
         run: |
+          git submodule update --remote
           cd vscode-icons/
-          git fetch --tags
-          git submodule update
           tag=$(git describe --abbrev=0 --tags)
+          git reset --hard "$tag"
           echo "latest_tag=$tag" >> "$GITHUB_OUTPUT"
 
       - name: Create pull request
