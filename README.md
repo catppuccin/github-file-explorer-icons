@@ -12,6 +12,10 @@
 </p>
 
 <p align="center">
+  <img src="https://github.com/catppuccin/vscode-icons/raw/main/assets/catwalk.webp" width=600/>
+</p>
+
+<p align="center">
 	<img src="assets/previews/preview.webp"/>
 </p>
 
@@ -43,6 +47,10 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
   <a href="https://chromewebstore.google.com/detail/catppuccin-for-github-fil/lnjaiaapbakfhlbjenjkhffcdpoompki"><img src="https://img.shields.io/badge/Chrome_Web_Store-b7bdf8?style=for-the-badge&logo=GoogleChrome&logoColor=24273a"></a>
   <a href="https://microsoftedge.microsoft.com/addons/detail/catppuccin-for-github-fil/enicfllfdibbjhnpembomakaamcdcakl"><img src="https://img.shields.io/badge/Microsoft_Edge_Add--ons-7dc4e4?style=for-the-badge&logo=Microsoft-edge&logoColor=24273a"></a>
 </p>
+
+> [!NOTE]
+> Icons are pulled from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons); please direct any requests for new icons or associations there!
+
 
 ### Manually
 
