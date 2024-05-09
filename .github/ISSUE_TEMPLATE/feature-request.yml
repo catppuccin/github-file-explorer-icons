@@ -1,0 +1,10 @@
+name: Feature Request
+description: Request a feature for the extension.
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: What feature are you envisioning?
+      description: Explain what you want the feature to achieve, including eventual configuration and context.
+    validations:
+      required: true
