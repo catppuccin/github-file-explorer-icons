@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Icon Request
+    url: https://github.com/catppuccin/vscode-icons/issues/new?labels=icon+request&projects=&template=1-icon-request.yml
+    about: Request a specific icon.
+  - name: Association Request
+    url: https://github.com/catppuccin/vscode-icons/issues/new?labels=association+request&projects=&template=2-association-request.yml
+    about: Request an existing icon to have new association(s).

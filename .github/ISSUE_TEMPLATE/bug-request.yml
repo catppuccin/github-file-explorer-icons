@@ -1,0 +1,30 @@
+name: Bug Request
+description: Report a bug or unexpected behaviour.
+labels: [bug]
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for your concerns.
+      options:
+        - label: I have searched the existing issues.
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Are you on the latest version of the extension?
+      description: Please make sure you are fully up-to-date before reporting a bug!
+      options:
+        - label: I am on the latest version of the extension.
+          required: true
+  - type: input
+    attributes:
+      label: What browser are you using?
+      description: E.g. Google Chrome, Firefox, Microsoft Edge, Safari, Arc...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What issue are you experiencing?
+      description: Explain what issue you ran into, what unexpected behaviour you encoutered. Providing as much context as possible helps.
+    validations:
+      required: true
