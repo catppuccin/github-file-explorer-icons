@@ -11,13 +11,13 @@
 		{ "type": "feat", "section": "Features" },
 		{ "type": "fix", "section": "Bug Fixes" },
 		{ "type": "perf", "section": "Performance Improvements" },
-		{ "type": "docs", "hidden": true },
-		{ "type": "revert", "hidden": true },
-		{ "type": "style", "hidden": true },
-		{ "type": "chore", "hidden": true },
-		{ "type": "refactor", "hidden": true },
-		{ "type": "test", "hidden": true },
-		{ "type": "build", "hidden": true },
-		{ "type": "ci", "hidden": true }
+		{ "type": "revert", "section": "Reverts", "hidden": true },
+		{ "type": "docs", "section": "Documentation", "hidden": true },
+		{ "type": "style", "section": "Styles", "hidden": true },
+		{ "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
+		{ "type": "refactor", "section": "Code Refactoring", "hidden": true },
+		{ "type": "test", "section": "Tests", "hidden": true },
+		{ "type": "build", "section": "Build System", "hidden": true },
+		{ "type": "ci", "section": "Continuous Integration", "hidden": true }
 	]
 }
