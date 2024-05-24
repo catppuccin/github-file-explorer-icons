@@ -1,15 +1,28 @@
-name: Release
+name: Release Please
 
 on:
+  workflow_dispatch:
   push:
-    tags:
-      - 'v*.*.*'
+    branches: [main]
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
 
 jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,11 +57,7 @@ jobs:
           FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
           FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
 
-      - name: Write changelog
-        run: pnpm dlx changelogithub@latest --output CHANGELOG.md
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: CHANGELOG.md
-          files: dist/*.zip
+      - name: Upload artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} dist/*.zip
