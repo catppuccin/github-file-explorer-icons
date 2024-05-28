@@ -16,8 +16,8 @@ importers:
         version: 2.1.6
     devDependencies:
       '@humanfs/node':
-        specifier: 0.14.0
-        version: 0.14.0
+        specifier: 0.16.0
+        version: 0.16.0
       '@humanfs/types':
         specifier: 0.13.0
         version: 0.13.0
@@ -32,7 +32,7 @@ importers:
         version: 3.2.0
       wxt:
         specifier: 0.17.3
-        version: 0.17.3
+        version: 0.17.3(@types/node@20.11.20)(rollup@4.12.0)
 
 packages:
 
@@ -216,12 +216,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@humanfs/core@0.14.0':
-    resolution: {integrity: sha512-MiEIW6N7UGWbm6BhkLysBVOo/Quc6VQVpkLLrIgjAQD0NjTdaSj3Ja4eQqGnkJdXFVUhcGsTNorYU5lytM6Ipg==}
+  '@humanfs/core@0.17.0':
+    resolution: {integrity: sha512-ZAK7jtcVRwPiRZdT+W2ZaGV1oxVQK8IXvKrdpRkrDCVniKXNmqL+k+r0NhWKk9k9Nwm1yrCqr8utaa24CVK1OQ==}
     engines: {node: '>=18.18.0'}
 
-  '@humanfs/node@0.14.0':
-    resolution: {integrity: sha512-slarEZH1PaS80wlSnk8buLPz4RE85S46BHJ1xKb9gF8gOfQ1fyNbi2SkVynmVYtT0fAY+oMujLum6yPayG4Jxw==}
+  '@humanfs/node@0.16.0':
+    resolution: {integrity: sha512-SRm0W5uNUXXcVUuPDQl0j+vnwnaaHqMPKlFR+6wG5qeD7ff3QBEMYSSLRg/qCrugCFIE9byNQkNk/rqbUSQMLQ==}
     engines: {node: '>=18.18.0'}
 
   '@humanfs/types@0.13.0':
@@ -914,9 +914,11 @@ packages:
 
   glob@6.0.4:
     resolution: {integrity: sha512-MKZeRNyYZAVVVG1oZeLaWie1uweH40m9AZwIwxyPbTSX4hHrVYSzLg0Ro5Z5R7XKkIX+Cc6oD1rqeDJnwsB8/A==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   global-dirs@3.0.1:
     resolution: {integrity: sha512-NBcGGFbBA9s1VzD41QXDG+3++t9Mn5t1FpLdhESY6oKY4gYTFpX4wO3sqGUa0Srjtbfj3szX0RnemmrVRUdULA==}
@@ -997,6 +999,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -1559,10 +1562,12 @@ packages:
 
   rimraf@2.4.5:
     resolution: {integrity: sha512-J5xnxTyqaiw06JjMftq7L9ouA448dw/E7dKghkP9WpKNuwmARNNg+Gk8/u5ryb9N/Yo2+z3MCwuqFK/+qPOPfQ==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.12.0:
@@ -1975,12 +1980,14 @@ packages:
 
 snapshots:
 
-  '@aklinker1/rollup-plugin-visualizer@5.12.0':
+  '@aklinker1/rollup-plugin-visualizer@5.12.0(rollup@4.12.0)':
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
       source-map: 0.7.4
       yargs: 17.7.2
+    optionalDependencies:
+      rollup: 4.12.0
 
   '@babel/code-frame@7.23.5':
     dependencies:
@@ -2086,11 +2093,11 @@ snapshots:
   '@esbuild/win32-x64@0.19.12':
     optional: true
 
-  '@humanfs/core@0.14.0': {}
+  '@humanfs/core@0.17.0': {}
 
-  '@humanfs/node@0.14.0':
+  '@humanfs/node@0.16.0':
     dependencies:
-      '@humanfs/core': 0.14.0
+      '@humanfs/core': 0.17.0
       '@humanwhocodes/retry': 0.1.2
 
   '@humanfs/types@0.13.0': {}
@@ -2123,11 +2130,13 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@rollup/pluginutils@5.1.0':
+  '@rollup/pluginutils@5.1.0(rollup@4.12.0)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    optionalDependencies:
+      rollup: 4.12.0
 
   '@rollup/rollup-android-arm-eabi@4.12.0':
     optional: true
@@ -3665,9 +3674,9 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  unimport@3.7.1:
+  unimport@3.7.1(rollup@4.12.0):
     dependencies:
-      '@rollup/pluginutils': 5.1.0
+      '@rollup/pluginutils': 5.1.0(rollup@4.12.0)
       acorn: 8.11.3
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
@@ -3721,12 +3730,13 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  vite@5.1.4:
+  vite@5.1.4(@types/node@20.11.20):
     dependencies:
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.12.0
     optionalDependencies:
+      '@types/node': 20.11.20
       fsevents: 2.3.3
 
   watchpack@2.4.0:
@@ -3821,9 +3831,9 @@ snapshots:
 
   ws@8.16.0: {}
 
-  wxt@0.17.3:
+  wxt@0.17.3(@types/node@20.11.20)(rollup@4.12.0):
     dependencies:
-      '@aklinker1/rollup-plugin-visualizer': 5.12.0
+      '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.12.0)
       '@types/webextension-polyfill': 0.10.7
       '@webext-core/fake-browser': 1.3.1
       '@webext-core/isolated-element': 1.1.1
@@ -3853,8 +3863,8 @@ snapshots:
       picocolors: 1.0.0
       prompts: 2.4.2
       publish-browser-extension: 2.1.3
-      unimport: 3.7.1
-      vite: 5.1.4
+      unimport: 3.7.1(rollup@4.12.0)
+      vite: 5.1.4(@types/node@20.11.20)
       web-ext-run: 0.2.0
       webextension-polyfill: 0.10.0
       zip-dir: 2.0.0
