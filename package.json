@@ -13,7 +13,7 @@
 		"jiti": "1.21.0",
 		"prettier": "3.2.5",
 		"svgo": "3.2.0",
-		"wxt": "0.18.3"
+		"wxt": "0.18.4"
 	},
 	"scripts": {
 		"format": "prettier --write .",

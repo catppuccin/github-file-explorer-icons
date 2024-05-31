@@ -31,8 +31,8 @@ importers:
         specifier: 3.2.0
         version: 3.2.0
       wxt:
-        specifier: 0.18.3
-        version: 0.18.3(@types/node@20.11.20)(rollup@4.18.0)
+        specifier: 0.18.4
+        version: 0.18.4(@types/node@20.11.20)(rollup@4.18.0)
 
 packages:
 
@@ -52,10 +52,6 @@ packages:
 
   '@babel/helper-string-parser@7.24.6':
     resolution: {integrity: sha512-WdJjwMEkmBicq5T9fm/cHND3+UlFa2Yj8ALLgmoSQAJZysYbBjw+azChSGPN4DSPLXOcooGRvDwZWMcF/mLO2Q==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.22.20':
-    resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.24.6':
@@ -2142,8 +2138,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  wxt@0.18.3:
-    resolution: {integrity: sha512-AFoppfr35LLlPpYyF5nGSR4n7HfTzdq+ihjewL0Urw8Bv83Ld/Cnw+xv7AF0xjZFyKKI/d+AAA0NRdl4cHxAng==}
+  wxt@0.18.4:
+    resolution: {integrity: sha512-BHg+yyHPg4KpusPr4QrcZCqGvCG2U0xoCqikwe9xreLeSNwjSeu7SkbceD/LzD/ltYTz9ETt2tZcC8LfNfrgcQ==}
     hasBin: true
 
   xdg-basedir@5.1.0:
@@ -2208,13 +2204,11 @@ snapshots:
 
   '@babel/helper-string-parser@7.24.6': {}
 
-  '@babel/helper-validator-identifier@7.22.20': {}
-
   '@babel/helper-validator-identifier@7.24.6': {}
 
   '@babel/highlight@7.23.4':
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.20
+      '@babel/helper-validator-identifier': 7.24.6
       chalk: 2.4.2
       js-tokens: 4.0.0
 
@@ -4200,7 +4194,7 @@ snapshots:
 
   ws@8.16.0: {}
 
-  wxt@0.18.3(@types/node@20.11.20)(rollup@4.18.0):
+  wxt@0.18.4(@types/node@20.11.20)(rollup@4.18.0):
     dependencies:
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.18.0)
       '@types/webextension-polyfill': 0.10.7
