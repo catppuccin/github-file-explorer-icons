@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.2...v0.6.3) (2024-06-15)
+
+
+### Miscellaneous Chores
+
+* **release:** v0.6.3 ([#79](https://github.com/catppuccin/github-file-explorer-icons/issues/79)) ([d793733](https://github.com/catppuccin/github-file-explorer-icons/commit/d79373387138e144a1965333b57b26a082f28e5a))
+
 ## [0.6.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.1...v0.6.2) (2024-06-15)
 
 
