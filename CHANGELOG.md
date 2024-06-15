@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.1...v0.6.2) (2024-06-15)
+
+
+### Bug Fixes
+
+* update filename selector ([#71](https://github.com/catppuccin/github-file-explorer-icons/issues/71)) ([349db68](https://github.com/catppuccin/github-file-explorer-icons/commit/349db68e2c2aa6fa1b81436b4d7401a8b7f03965))
+
 ## [0.6.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.0...v0.6.1) (2024-06-04)
 
 
