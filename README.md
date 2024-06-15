@@ -51,7 +51,6 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
 > [!NOTE]
 > Icons are pulled from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons); please direct any requests for new icons or associations there!
 
-
 ### Manually
 
 ```bash
@@ -92,6 +91,10 @@ To build the extension, run either:
 
 - `pnpm build`, where the compiled extension will be available at `dist/chrome-mv3`...
 - or `pnpm zip:firefox`, where the compiled and _zipped_ extension can be found at `dist/catppuccin-github-file-explorer-icons-<version>-firefox.zip`.
+
+### Publishing
+
+The [`pnpm wxt submit init` command](https://wxt.dev/get-started/publishing.html#automation) will walk you through each of the tokens that needs to be added for publishing to each store.
 
 ## 💝 Thanks to
 
