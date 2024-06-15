@@ -16,8 +16,8 @@ importers:
         version: 2.1.6
     devDependencies:
       '@humanfs/node':
-        specifier: 0.16.0
-        version: 0.16.0
+        specifier: 0.16.3
+        version: 0.16.3
       '@humanfs/types':
         specifier: 0.13.0
         version: 0.13.0
@@ -367,20 +367,20 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@humanfs/core@0.17.0':
-    resolution: {integrity: sha512-ZAK7jtcVRwPiRZdT+W2ZaGV1oxVQK8IXvKrdpRkrDCVniKXNmqL+k+r0NhWKk9k9Nwm1yrCqr8utaa24CVK1OQ==}
+  '@humanfs/core@0.18.2':
+    resolution: {integrity: sha512-2ZFEE4hN5cXBwDgyYUI9M2PMTaB5iP7BsRVl6pHbu+OOOHn6LdO+cjtrm5bBwjKZkJTq6TEpEAH1Tm/7T4aDhA==}
     engines: {node: '>=18.18.0'}
 
-  '@humanfs/node@0.16.0':
-    resolution: {integrity: sha512-SRm0W5uNUXXcVUuPDQl0j+vnwnaaHqMPKlFR+6wG5qeD7ff3QBEMYSSLRg/qCrugCFIE9byNQkNk/rqbUSQMLQ==}
+  '@humanfs/node@0.16.3':
+    resolution: {integrity: sha512-o0mvgAAQQUMAWnu8H86czA25+q7I2YbtLEpCn6ZeTX08QK0iKiIfRM0mM6e3b4EUaBY81uKNO/wJzSWE3fl9Rw==}
     engines: {node: '>=18.18.0'}
 
   '@humanfs/types@0.13.0':
     resolution: {integrity: sha512-3QDsfgPh0XN4D5Wg89cmswDJWLtZI4iqt7N0MrRbJBfpE9LrTYMwNKHkfZupyN531hhYPsDOtCHhHhF75LWOrg==}
     engines: {node: '>=18.18.0'}
 
-  '@humanwhocodes/retry@0.1.2':
-    resolution: {integrity: sha512-JNWGHkYfWI0+YgRHOwkFKjOuelfypQtp0GSx0lsOP9jU1Tj4f8k0x4dcaJSEZTp61THZJ+f9PJRh1GzYlQqHOQ==}
+  '@humanwhocodes/retry@0.3.0':
+    resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
   '@jridgewell/sourcemap-codec@1.4.15':
@@ -2382,16 +2382,16 @@ snapshots:
   '@esbuild/win32-x64@0.20.2':
     optional: true
 
-  '@humanfs/core@0.17.0': {}
+  '@humanfs/core@0.18.2': {}
 
-  '@humanfs/node@0.16.0':
+  '@humanfs/node@0.16.3':
     dependencies:
-      '@humanfs/core': 0.17.0
-      '@humanwhocodes/retry': 0.1.2
+      '@humanfs/core': 0.18.2
+      '@humanwhocodes/retry': 0.3.0
 
   '@humanfs/types@0.13.0': {}
 
-  '@humanwhocodes/retry@0.1.2': {}
+  '@humanwhocodes/retry@0.3.0': {}
 
   '@jridgewell/sourcemap-codec@1.4.15': {}
 
