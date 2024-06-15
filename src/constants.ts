@@ -9,7 +9,7 @@ export const SELECTORS = {
     .ActionList-item-label,
     a.tree-browser-result > marked-text,
     .PRIVATE_TreeView-item-content > .PRIVATE_TreeView-item-content-text,
-    .react-directory-filename-column h3,
+    .react-directory-filename-column .react-directory-filename-cell a,
     [aria-label="Parent directory"] div`,
 	icon: `.octicon-file,
     .octicon-file-directory-fill,
