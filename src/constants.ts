@@ -1,22 +1,70 @@
+const GITHUB_SELECTORS = {
+	row: [
+		'.js-navigation-container[role=grid] > .js-navigation-item',
+		'file-tree .ActionList-content',
+		'a.tree-browser-result',
+		'.PRIVATE_TreeView-item-content',
+		'.react-directory-filename-column',
+		'[aria-label="Parent directory"]',
+	],
+	filename: [
+		'div[role="rowheader"] > span',
+		'.ActionList-item-label',
+		'a.tree-browser-result > marked-text',
+		'.PRIVATE_TreeView-item-content > .PRIVATE_TreeView-item-content-text',
+		'.react-directory-filename-column .react-directory-filename-cell a',
+		'[aria-label="Parent directory"] div',
+	],
+	icon: [
+		'.octicon-file',
+		'.octicon-file-directory-fill',
+		'.octicon-file-directory-open-fill',
+		'.octicon-file-submodule',
+		'.react-directory-filename-column > svg',
+		'[aria-label="Parent directory"] svg',
+	],
+};
+
+const GITLAB_SELECTORS = {
+	row: [
+		'.tree-table .tree-item',
+		'.file-header-content',
+		'.diff-tree-list .file-row',
+	],
+	filename: [
+		'.tree-item-file-name .tree-item-link span:last-of-type',
+		'.file-title-name',
+		'span.gl-truncate-component',
+	],
+	icon: [
+		'.folder-icon',
+		'.file-icon',
+		'span svg:has(use[href^="/assets/file_icons/"])',
+	],
+};
+
+const FORGEJO_SELECTORS = {
+	row: [
+		'#repo-files-table .entry',
+		'#diff-file-tree .item-file',
+		'#diff-file-tree .item-directory',
+	],
+	filename: ['.name a.muted', 'span.gt-ellipsis'],
+	icon: ['.octicon-file-directory-fill', '.octicon-file'],
+};
+
+function mergeSelectors(key: keyof typeof GITHUB_SELECTORS): string {
+	return [
+		...GITHUB_SELECTORS[key],
+		...GITLAB_SELECTORS[key],
+		...FORGEJO_SELECTORS[key],
+	].join(',');
+}
+
 export const SELECTORS = {
-	row: `.js-navigation-container[role=grid] > .js-navigation-item,
-    file-tree .ActionList-content,
-    a.tree-browser-result,
-    .PRIVATE_TreeView-item-content,
-    .react-directory-filename-column,
-    [aria-label="Parent directory"]`,
-	filename: `div[role="rowheader"] > span,
-    .ActionList-item-label,
-    a.tree-browser-result > marked-text,
-    .PRIVATE_TreeView-item-content > .PRIVATE_TreeView-item-content-text,
-    .react-directory-filename-column .react-directory-filename-cell a,
-    [aria-label="Parent directory"] div`,
-	icon: `.octicon-file,
-    .octicon-file-directory-fill,
-    .octicon-file-directory-open-fill,
-    .octicon-file-submodule,
-    .react-directory-filename-column > svg,
-    [aria-label="Parent directory"] svg`,
+	row: mergeSelectors('row'),
+	filename: mergeSelectors('filename'),
+	icon: mergeSelectors('icon'),
 };
 
 export const icons = {
