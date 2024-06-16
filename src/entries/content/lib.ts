@@ -70,7 +70,12 @@ export async function replaceIconInRow(row: HTMLElement) {
 export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 	const fileNameEl = row.querySelector(SELECTORS.filename) as HTMLElement;
 	if (!fileNameEl) return;
-	const fileName = fileNameEl.textContent?.split('/').at(0).trim();
+	const fileName = fileNameEl.textContent
+		?.split('/')
+		.at(0)
+		.trim()
+		/* Remove [Unicode LEFT-TO-RIGHT MARK](https://en.wikipedia.org/wiki/Left-to-right_mark) used on GitLab's merge request diff file tree. */
+		.replace(/\u200E/g, '');
 
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
