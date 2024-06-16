@@ -39,7 +39,7 @@ const GITLAB_SELECTORS = {
 	icon: ['.folder-icon', '.file-icon', 'span > svg'],
 };
 
-const CODEBERG_SELECTORS = {
+const FORGEJO_SELECTORS = {
 	row: [
 		'#repo-files-table .entry',
 		'#diff-file-tree .item-file',
@@ -53,7 +53,7 @@ function mergeSelectors(key: keyof typeof GITHUB_SELECTORS): string {
 	return [
 		...GITHUB_SELECTORS[key],
 		...GITLAB_SELECTORS[key],
-		...CODEBERG_SELECTORS[key],
+		...FORGEJO_SELECTORS[key],
 	].join(',');
 }
 
