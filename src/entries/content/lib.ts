@@ -75,7 +75,8 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 	const isDir =
 		icon.getAttribute('aria-label') === 'Directory' ||
 		icon.getAttribute('class')?.includes('octicon-file-directory-') ||
-		icon.classList.contains('icon-directory');
+		icon.classList.contains('icon-directory') ||
+		icon.classList.contains('folder-icon');
 	const isSubmodule =
 		icon.classList.contains('octicon-file-submodule') ||
 		fileNameEl

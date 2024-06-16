@@ -7,7 +7,7 @@ import { flavor } from '@/storage';
 import { replaceIconInRow, injectStyles } from './lib';
 
 export default defineContentScript({
-	matches: ['*://github.com/*'],
+	matches: ['*://github.com/*', '*://gitlab.com/*', '*://codeberg.org/*'],
 	runAt: 'document_start',
 	main() {
 		// Replacing all icons synchronously prevents visual "blinks" but can
