@@ -36,7 +36,11 @@ const GITLAB_SELECTORS = {
 		'.file-title-name',
 		'span.gl-truncate-component',
 	],
-	icon: ['.folder-icon', '.file-icon', 'span > svg'],
+	icon: [
+		'.folder-icon',
+		'.file-icon',
+		'span svg:has(use[href^="/assets/file_icons/"])',
+	],
 };
 
 const FORGEJO_SELECTORS = {
