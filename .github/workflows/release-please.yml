@@ -52,7 +52,7 @@ jobs:
         run: gh release upload ${{ needs.release-please.outputs.tag_name }} dist/*.zip
 
       - name: Submit to stores
-        run: pnpm wxt submit --chrome-zip dist/*-chrome.zip --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip
+        run: pnpm wxt submit --chrome-zip dist/*-chrome.zip --firefox-zip dist/*-firefox.zip --firefox-sources-zip dist/*-sources.zip --edge-zip dist/*-chrome.zip
         env:
           CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
