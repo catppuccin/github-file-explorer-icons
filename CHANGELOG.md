@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.3...v0.7.0) (2024-06-17)
+
+
+### Features
+
+* support gitlab and codeberg ([#81](https://github.com/catppuccin/github-file-explorer-icons/issues/81)) ([5e81299](https://github.com/catppuccin/github-file-explorer-icons/commit/5e8129959ac32b0f136f874988bbb540ef8dae93))
+
 ## [0.6.3](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.6.2...v0.6.3) (2024-06-15)
 
 
