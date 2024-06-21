@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"dependencies": {
 		"@catppuccin/palette": "1.2.0",
-		"selector-observer": "2.1.6"
+		"selector-observer": "2.1.6",
+		"webext-dynamic-content-scripts": "10.0.3",
+		"webext-permission-toggle": "5.0.1"
 	},
 	"devDependencies": {
 		"@humanfs/node": "0.16.3",
