@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.7.1...v0.7.2) (2024-06-22)
+
+
+### Bug Fixes
+
+* submodule folder detection ([#91](https://github.com/catppuccin/github-file-explorer-icons/issues/91)) ([b57bf43](https://github.com/catppuccin/github-file-explorer-icons/commit/b57bf43ee4331d4142368f97c90a39627f535104))
+
 ## [0.7.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.7.0...v0.7.1) (2024-06-18)
 
 
