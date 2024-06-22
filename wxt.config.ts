@@ -12,7 +12,20 @@ export default defineConfig({
 	outDir: 'dist',
 	manifest: {
 		name: 'Catppuccin for GitHub File Explorer Icons',
-		permissions: ['storage'],
+		// See https://github.com/fregante/webext-dynamic-content-scripts/blob/main/how-to-add-github-enterprise-support-to-web-extensions.md.
+		permissions: ['storage', 'scripting', 'contextMenus', 'activeTab'],
+		optional_host_permissions: ['*://*/*'],
+		// content_scripts: [
+		// 	{
+		// 		matches: [
+		// 			'*://codeberg.org/*',
+		// 			'*://github.com/*',
+		// 			'*://gitlab.com/*',
+		// 		],
+		// 		run_at: 'document_start',
+		// 		js: ['content-scripts/content.js'],
+		// 	},
+		// ],
 		homepage_url:
 			'https://github.com/catppuccin/github-file-explorer-icons',
 	},
