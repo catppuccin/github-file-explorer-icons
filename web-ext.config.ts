@@ -5,5 +5,6 @@ export default defineRunnerConfig({
 		'https://github.com/catppuccin/catppuccin',
 		'https://gitlab.com/gitlab-org/gitlab',
 		'https://codeberg.org/forgejo/forgejo',
+		'https://gitea.catppuccin.com/catppuccin/catppuccin',
 	],
 });

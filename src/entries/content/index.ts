@@ -7,8 +7,10 @@ import { flavor } from '@/storage';
 import { replaceIconInRow, injectStyles } from './lib';
 
 export default defineContentScript({
+	// Make sure this value is updated in wxt.config.ts as well.
 	matches: ['*://github.com/*', '*://gitlab.com/*', '*://codeberg.org/*'],
 	runAt: 'document_start',
+
 	main() {
 		// Replacing all icons synchronously prevents visual "blinks" but can
 		// cause missing icons/rendering delay in very large folders.
