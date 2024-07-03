@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.7.1...v0.8.0) (2024-07-03)
+
+
+### Features
+
+* allow enabling extension on custom domains ([#90](https://github.com/catppuccin/github-file-explorer-icons/issues/90)) ([d274322](https://github.com/catppuccin/github-file-explorer-icons/commit/d27432266a6a998f06b41f6e1ab57fb7d1daae38))
+
+
+### Bug Fixes
+
+* submodule folder detection ([#91](https://github.com/catppuccin/github-file-explorer-icons/issues/91)) ([b57bf43](https://github.com/catppuccin/github-file-explorer-icons/commit/b57bf43ee4331d4142368f97c90a39627f535104))
+
 ## [0.7.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.7.0...v0.7.1) (2024-06-18)
 
 
