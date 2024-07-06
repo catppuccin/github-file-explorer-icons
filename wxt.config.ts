@@ -71,4 +71,12 @@ export default defineConfig({
 			);
 		},
 	},
+	runner: {
+		startUrls: [
+			'https://github.com/catppuccin/catppuccin',
+			'https://gitlab.com/gitlab-org/gitlab',
+			'https://codeberg.org/forgejo/forgejo',
+			'https://gitea.catppuccin.com/catppuccin/catppuccin',
+		],
+	},
 });
