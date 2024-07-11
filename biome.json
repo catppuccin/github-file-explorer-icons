@@ -5,6 +5,9 @@
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
+	"files": {
+		"ignore": ["vscode-icons/**"]
+	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
@@ -13,7 +16,7 @@
 		"lineEnding": "lf",
 		"lineWidth": 80,
 		"attributePosition": "auto",
-		"ignore": ["pnpm-lock.yaml", "vscode-icons/**"]
+		"ignore": ["pnpm-lock.yaml"]
 	},
 	"organizeImports": { "enabled": true },
 	"linter": { "enabled": true, "rules": { "recommended": true } },
