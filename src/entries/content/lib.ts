@@ -88,7 +88,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 	const isOpen =
 		isDir && icon.classList.contains('octicon-file-directory-open-fill');
 
-	const fileExtensions: string[] = [];
+	const fileExtensions: Array<string> = [];
 	// Avoid doing an explosive combination of extensions for very long filenames
 	// (most file systems do not allow files > 255 length) with lots of `.` characters
 	// https://github.com/microsoft/vscode/issues/116199
@@ -153,7 +153,7 @@ export async function replaceElementWithIcon(
 
 async function findIconMatch(
 	fileName: string,
-	fileExtensions: string[],
+	fileExtensions: Array<string>,
 	isDir: boolean,
 	isSubmodule: boolean,
 ): Promise<IconName> {

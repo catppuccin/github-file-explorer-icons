@@ -58,10 +58,9 @@ async function init() {
 		fileExtensions: document.querySelector('ul#associations-file-extensions'),
 		fileNames: document.querySelector('ul#associations-file-names'),
 		folderNames: document.querySelector('ul#associations-folder-names'),
-	} as Record<keyof Associations, HTMLUListElement>) as [
-		keyof Associations,
-		HTMLUListElement,
-	][]) {
+	} as Record<keyof Associations, HTMLUListElement>) as Array<
+		[keyof Associations, HTMLUListElement]
+	>) {
 		for (const [association, icon] of Object.entries(associations[key])) {
 			const li = document.createElement('li');
 			const inputA = document.createElement('input');
