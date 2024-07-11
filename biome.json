@@ -25,6 +25,7 @@
 			"recommended": true,
 			"correctness": {
 				"noUnusedImports": "warn",
+				"noUnusedVariables": "warn",
 				"useArrayLiterals": "error"
 			},
 			"style": {
@@ -40,6 +41,9 @@
 			},
 			"suspicious": {
 				"useAwait": "error"
+			},
+			"complexity": {
+				"useSimplifiedLogicExpression": "error"
 			}
 		}
 	},
