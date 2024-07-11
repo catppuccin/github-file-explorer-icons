@@ -1,4 +1,4 @@
-name: Build
+name: Check
 
 on:
   push:
@@ -7,14 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: "recursive"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -28,7 +25,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build and zip
+      - name: Check files with Biome
         run: |
-          pnpm zip
-          pnpm zip:firefox
+          pnpm biome ci --reporter=github

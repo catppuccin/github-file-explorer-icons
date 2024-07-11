@@ -2,13 +2,13 @@ import './styles.css';
 
 import type { Associations, Flavor, IconName } from '@/types';
 
+import { icons } from '@/constants';
 import {
+	customAssociations,
 	flavor,
 	monochrome,
 	specificFolders,
-	customAssociations,
 } from '@/storage';
-import { icons } from '@/constants';
 import { createStylesElement } from '@/utils';
 
 import { flavorEntries } from '@catppuccin/palette';
@@ -55,15 +55,12 @@ async function init() {
 	const associations = await customAssociations.getValue();
 
 	for (const [key, el] of Object.entries({
-		fileExtensions: document.querySelector(
-			'ul#associations-file-extensions',
-		),
+		fileExtensions: document.querySelector('ul#associations-file-extensions'),
 		fileNames: document.querySelector('ul#associations-file-names'),
 		folderNames: document.querySelector('ul#associations-folder-names'),
-	} as Record<keyof Associations, HTMLUListElement>) as [
-		keyof Associations,
-		HTMLUListElement,
-	][]) {
+	} as Record<keyof Associations, HTMLUListElement>) as Array<
+		[keyof Associations, HTMLUListElement]
+	>) {
 		for (const [association, icon] of Object.entries(associations[key])) {
 			const li = document.createElement('li');
 			const inputA = document.createElement('input');
@@ -71,7 +68,7 @@ async function init() {
 			const del = document.createElement('button');
 
 			del.className = 'delete';
-			del.innerHTML = icons['x'];
+			del.innerHTML = icons.x;
 
 			inputA.value = association;
 			inputA.setAttribute('required', 'true');
@@ -113,7 +110,7 @@ async function init() {
 			const del = document.createElement('button');
 
 			del.className = 'delete';
-			del.innerHTML = icons['x'];
+			del.innerHTML = icons.x;
 
 			inputA.setAttribute('required', 'true');
 			inputB.setAttribute('required', 'true');
@@ -139,11 +136,7 @@ async function init() {
 					associations[key][inputA.value] = inputB.value as IconName;
 					await customAssociations.setValue(associations);
 				}
-				if (
-					!addedEmpty &&
-					inputA.checkValidity() &&
-					inputB.checkValidity()
-				) {
+				if (!addedEmpty && inputA.checkValidity() && inputB.checkValidity()) {
 					addEmpty();
 					addedEmpty = true;
 				}
@@ -153,11 +146,7 @@ async function init() {
 					associations[key][inputA.value] = inputB.value as IconName;
 					await customAssociations.setValue(associations);
 				}
-				if (
-					!addedEmpty &&
-					inputA.checkValidity() &&
-					inputB.checkValidity()
-				) {
+				if (!addedEmpty && inputA.checkValidity() && inputB.checkValidity()) {
 					addEmpty();
 					addedEmpty = true;
 				}

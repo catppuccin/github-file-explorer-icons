@@ -1,8 +1,8 @@
 import type { IconName } from '@/types';
 
+import { getAssociations } from '@/associations';
 import { ATTRIBUTE_PREFIX, SELECTORS } from '@/constants';
 import { flavor, monochrome, specificFolders } from '@/storage';
-import { getAssociations } from '@/associations';
 import { createStylesElement } from '@/utils';
 
 import { flavors } from '@catppuccin/palette';
@@ -36,7 +36,7 @@ async function createIconElement(
 	fileName: string,
 	originalIcon: HTMLElement,
 ): Promise<SVGSVGElement> {
-	let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 	if (await monochrome.getValue()) {
 		svg.innerHTML = icons[iconName].replaceAll(
 			/var\(--ctp-\w+\)/g,
@@ -88,7 +88,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 	const isOpen =
 		isDir && icon.classList.contains('octicon-file-directory-open-fill');
 
-	const fileExtensions: string[] = [];
+	const fileExtensions: Array<string> = [];
 	// Avoid doing an explosive combination of extensions for very long filenames
 	// (most file systems do not allow files > 255 length) with lots of `.` characters
 	// https://github.com/microsoft/vscode/issues/116199
@@ -108,7 +108,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 
 	await replaceElementWithIcon(
 		icon,
-		isOpen ? ((iconName + '_open') as IconName) : iconName,
+		isOpen ? (`${iconName}_open` as IconName) : iconName,
 		fileName,
 	);
 }
@@ -139,10 +139,10 @@ export async function replaceElementWithIcon(
 	if (
 		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
 	) {
-		let companion = await createIconElement(
+		const companion = await createIconElement(
 			(iconName.includes('_open')
 				? iconName.replace('_open', '')
-				: iconName + '_open') as IconName,
+				: `${iconName}_open`) as IconName,
 			fileName,
 			icon,
 		);
@@ -153,7 +153,7 @@ export async function replaceElementWithIcon(
 
 async function findIconMatch(
 	fileName: string,
-	fileExtensions: string[],
+	fileExtensions: Array<string>,
 	isDir: boolean,
 	isSubmodule: boolean,
 ): Promise<IconName> {
@@ -174,19 +174,18 @@ async function findIconMatch(
 		}
 
 		return '_folder';
-	} else {
-		if (fileName in associations.fileNames)
-			return associations.fileNames[fileName];
-		if (fileName.toLowerCase() in associations.fileNames)
-			return associations.fileNames[fileName.toLowerCase()];
-
-		for (const ext of fileExtensions) {
-			if (ext in associations.fileExtensions)
-				return associations.fileExtensions[ext];
-			if (ext in associations.languageIds)
-				return associations.languageIds[ext];
-		}
-
-		return '_file';
 	}
+
+	if (fileName in associations.fileNames)
+		return associations.fileNames[fileName];
+	if (fileName.toLowerCase() in associations.fileNames)
+		return associations.fileNames[fileName.toLowerCase()];
+
+	for (const ext of fileExtensions) {
+		if (ext in associations.fileExtensions)
+			return associations.fileExtensions[ext];
+		if (ext in associations.languageIds) return associations.languageIds[ext];
+	}
+
+	return '_file';
 }

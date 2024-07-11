@@ -4,7 +4,7 @@ import { observe } from 'selector-observer';
 
 import { SELECTORS } from '@/constants';
 import { flavor } from '@/storage';
-import { replaceIconInRow, injectStyles } from './lib';
+import { injectStyles, replaceIconInRow } from './lib';
 
 export default defineContentScript({
 	// Make sure this value is updated in wxt.config.ts as well.
