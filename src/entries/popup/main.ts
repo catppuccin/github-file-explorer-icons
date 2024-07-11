@@ -2,13 +2,13 @@ import './styles.css';
 
 import type { Associations, Flavor, IconName } from '@/types';
 
+import { icons } from '@/constants';
 import {
+	customAssociations,
 	flavor,
 	monochrome,
 	specificFolders,
-	customAssociations,
 } from '@/storage';
-import { icons } from '@/constants';
 import { createStylesElement } from '@/utils';
 
 import { flavorEntries } from '@catppuccin/palette';

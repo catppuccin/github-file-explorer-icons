@@ -1,8 +1,8 @@
 import type { IconName } from '@/types';
 
+import { getAssociations } from '@/associations';
 import { ATTRIBUTE_PREFIX, SELECTORS } from '@/constants';
 import { flavor, monochrome, specificFolders } from '@/storage';
-import { getAssociations } from '@/associations';
 import { createStylesElement } from '@/utils';
 
 import { flavors } from '@catppuccin/palette';
