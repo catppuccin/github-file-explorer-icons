@@ -19,7 +19,30 @@
 		"ignore": ["pnpm-lock.yaml"]
 	},
 	"organizeImports": { "enabled": true },
-	"linter": { "enabled": true, "rules": { "recommended": true } },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"correctness": {
+				"noUnusedImports": "warn",
+				"useArrayLiterals": "error"
+			},
+			"style": {
+				"noNegationElse": "error",
+				"useCollapsedElseIf": "error",
+				"useConsistentArrayType": {
+					"level": "error",
+					"options": {
+						"syntax": "generic"
+					}
+				},
+				"useForOf": "error"
+			},
+			"suspicious": {
+				"useAwait": "error"
+			}
+		}
+	},
 	"javascript": {
 		"formatter": {
 			"jsxQuoteStyle": "double",
