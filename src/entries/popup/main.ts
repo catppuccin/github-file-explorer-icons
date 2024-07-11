@@ -69,7 +69,7 @@ async function init() {
 			const del = document.createElement('button');
 
 			del.className = 'delete';
-			del.innerHTML = icons['x'];
+			del.innerHTML = icons.x;
 
 			inputA.value = association;
 			inputA.setAttribute('required', 'true');
@@ -111,7 +111,7 @@ async function init() {
 			const del = document.createElement('button');
 
 			del.className = 'delete';
-			del.innerHTML = icons['x'];
+			del.innerHTML = icons.x;
 
 			inputA.setAttribute('required', 'true');
 			inputB.setAttribute('required', 'true');

@@ -1,7 +1,7 @@
 import { defineConfig } from 'wxt';
 
 import { hfs } from '@humanfs/node';
-import { join } from 'path';
+import { join } from 'node:path';
 import { optimize } from 'svgo';
 
 import jiti from 'jiti';

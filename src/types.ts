@@ -1,4 +1,4 @@
-import icons from '@/icons.json';
+import type icons from '@/icons.json';
 
 export type Flavor = 'latte' | 'frappe' | 'macchiato' | 'mocha';
 
