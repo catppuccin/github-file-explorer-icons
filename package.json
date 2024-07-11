@@ -20,7 +20,6 @@
 	"scripts": {
 		"format": "biome format --write .",
 		"lint": "biome lint .",
-		"lint:fix": "biome lint --write .",
 		"dev": "wxt",
 		"dev:firefox": "wxt --browser firefox",
 		"build": "wxt build",
