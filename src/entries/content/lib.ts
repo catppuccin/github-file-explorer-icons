@@ -94,7 +94,8 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 	// https://github.com/microsoft/vscode/issues/116199
 	if (fileName.length <= 255) {
 		for (let i = 0; i < fileName.length; i += 1) {
-			if (fileName[i] === '.') fileExtensions.push(fileName.slice(i + 1));
+			if (fileName[i] === '.')
+				fileExtensions.push(fileName.toLowerCase().slice(i + 1));
 		}
 	}
 
