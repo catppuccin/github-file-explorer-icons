@@ -16,14 +16,6 @@ export default defineConfig({
 		permissions: ['storage', 'scripting', 'contextMenus', 'activeTab'],
 		// @ts-expect-error: Now in browsers (see https://github.com/w3c/webextensions/issues/119).
 		optional_host_permissions: ['*://*/*'],
-		// Make sure to update in src/entries/content/index.ts as well.
-		content_scripts: [
-			{
-				matches: ['*://codeberg.org/*', '*://github.com/*', '*://gitlab.com/*'],
-				run_at: 'document_start',
-				js: ['content-scripts/content.js'],
-			},
-		],
 		homepage_url: 'https://github.com/catppuccin/github-file-explorer-icons',
 	},
 	hooks: {
@@ -58,6 +50,24 @@ export default defineConfig({
 						.associations,
 				),
 			);
+		},
+		'build:manifestGenerated': (wxt, manifest) => {
+			if (wxt.config.command === 'serve') {
+				// During development, content script is not listed in manifest, causing
+				// "webext-dynamic-content-scripts" to throw an error. So we need to
+				// add it manually.
+				manifest.content_scripts ??= [];
+				manifest.content_scripts.push({
+					// Make sure `matches` URLs are updated in src/entries/content/index.ts as well.
+					matches: [
+						'*://github.com/*',
+						'*://gitlab.com/*',
+						'*://codeberg.org/*',
+					],
+					run_at: 'document_start',
+					js: ['content-scripts/content.js'],
+				});
+			}
 		},
 	},
 	runner: {
