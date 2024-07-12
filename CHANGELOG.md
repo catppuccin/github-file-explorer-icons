@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.0...v0.8.1) (2024-07-11)
+
+
+### Bug Fixes
+
+* normalize file extensions to lowercase ([#101](https://github.com/catppuccin/github-file-explorer-icons/issues/101)) ([373da7b](https://github.com/catppuccin/github-file-explorer-icons/commit/373da7b56148d323a726eb2967f17d379738a2fd))
+* remove legacy rushFirst patch ([#99](https://github.com/catppuccin/github-file-explorer-icons/issues/99)) ([39b5b42](https://github.com/catppuccin/github-file-explorer-icons/commit/39b5b4290b10efb2116515c5b5fb8e6db33e13aa))
+
 ## [0.8.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.7.1...v0.8.0) (2024-07-03)
 
 
