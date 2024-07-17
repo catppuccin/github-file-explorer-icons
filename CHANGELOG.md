@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.1...v0.8.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* **wxt:** set manifest keys properly for mv2 ([#105](https://github.com/catppuccin/github-file-explorer-icons/issues/105)) ([86dbbb0](https://github.com/catppuccin/github-file-explorer-icons/commit/86dbbb019f4adf507ee6e3ef4240495d0152d328))
+
 ## [0.8.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.0...v0.8.1) (2024-07-11)
 
 
