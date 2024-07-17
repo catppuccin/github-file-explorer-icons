@@ -51,50 +51,33 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
 > [!NOTE]
 > Icons are pulled from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons); please direct any requests for new icons or associations there!
 
-### Manually
+### Manual
 
-```bash
-git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
-cd github-file-explorer-icons
-pnpm install
-```
+See the assets section at the bottom of [the latest release](https://github.com/catppuccin/github-file-explorer-icons/releases/latest) for pre-compiled zips of the extension. The Chrome zip will work for any Chromium browser (Microsoft Edge, Opera, Arc, etc.).
 
-#### Chrome
+<details>
+<summary>Chrome</summary>
 
-1. Run `pnpm build`.
-1. Open the Extensions page by navigating to `chrome://extensions`.
-1. Enable Developer Mode by flipping the toggle switch labeled **Developer mode**.
-1. Click the **Load unpacked** button and select the `dist/chrome-mv3` directory from the cloned repository.
+1. Unzip the `catppuccin-github-icons-extension-<version>-chrome.zip` asset from the latest release.
+2. Open the Extensions page by navigating to `chrome://extensions`.
+3. Enable Developer Mode (if not already enabled) by flipping the toggle switch labeled **Developer mode**.
+4. Click the **Load unpacked** button and select the unzipped directory from Step 1.
 
-#### Firefox
+</details>
 
-1. Run `pnpm zip:firefox`.
+<details>
+<summary>Firefox</summary>
+
 1. Open the Add-ons page by navigating to `about:addons`.
-1. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
-1. Click the **Load Temporary Add-on...** button and select the `dist/catppuccin-github-icons-extension-<version>-firefox.zip` file from the cloned repository.
+2. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
+3. Click the **Load Temporary Add-on...** button and select the `catppuccin-github-icons-extension-<version>-firefox.zip` asset from the latest release.
 
-## Development
+</details>
 
-### Setup
+## 🙋 FAQ
 
-```bash
-git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
-cd github-file-explorer-icons
-pnpm install
-```
-
-### Usage
-
-To launch a browser instance with the extension loaded and a GitHub page already opened, run `pnpm dev` for Chrome or `pnpm dev:firefox` for Firefox. Please note that it takes a while to open since it re-copies all icons from the submodule to the public folder.
-
-To build the extension, run either:
-
-- `pnpm build`, where the compiled extension will be available at `dist/chrome-mv3`...
-- or `pnpm zip:firefox`, where the compiled and _zipped_ extension can be found at `dist/catppuccin-github-file-explorer-icons-<version>-firefox.zip`.
-
-### Publishing
-
-The [`pnpm wxt submit init` command](https://wxt.dev/get-started/publishing.html#automation) will walk you through each of the tokens that needs to be added for publishing to each store.
+- Q: **_"How can I enable this extension on a custom domain?"_**\
+  A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+GitHub+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/github-file-explorer-icons/main/src/public/icon-128.png).
 
 ## 💝 Thanks to
 
