@@ -10,8 +10,6 @@
 
 ### Directory Structure
 
-The repository is structured so different components live as independently as possible.
-
 | Folder | Description |
 |---|---|
 | `assets/` | Previews of the extension in each flavor. |
@@ -27,7 +25,8 @@ The repository is structured so different components live as independently as po
 
 ### Setup
 
-Make sure to clone the repository with `--recurse-submodules` to create the `vscode-icons/` submodule. This repository uses the [pnpm](https://pnpm.io/) package manager.
+> [!IMPORTANT]
+> Make sure to clone the repository with `--recurse-submodules` to create the `vscode-icons/` submodule, which is necessary for building the extension.
 
 ```bash
 git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
