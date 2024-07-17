@@ -15,11 +15,11 @@ The repository is structured so different components live as independently as po
 | Folder | Description |
 |---|---|
 | `assets/` | Previews of the extension in each flavor. |
-| `vscode-icons/` | A submodule of https://github.com/catppuccin/vscode-icons, providing the SVG files that are bundled into the extension output. |
+| `vscode-icons/` | A submodule of https://github.com/catppuccin/vscode-icons, providing the SVG files that are bundled with the extension. |
 | `src/associations.ts` | Logic for merging the compiled associations list with user provided associations. |
-| `src/constants.ts` | Values repeated throughout the extension; selectors, icons, etc. |
-| `src/storage.ts` | Logic for dealing with the extension options and storing them. |
-| `src/public` | Icons for the extension. See https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/icons. |
+| `src/constants.ts` | Values repeated throughout the extension; CSS selectors, icons, etc. |
+| `src/storage.ts` | Logic for dealing with the extension's configuration options and storing them. |
+| `src/public` | The icon for the extension, in various sizes. See https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/icons. |
 | `src/entries` | Entry points for the extension. See https://wxt.dev/get-started/entrypoints.html. |
 | `src/entries/background` | An entrypoint that sets up the custom domains feature. See https://github.com/fregante/webext-permission-toggle. |
 | `src/entries/content` | The primary entrypoint containing the core functionality of the extension (injecting the icons into the file explorer). |
@@ -37,14 +37,14 @@ pnpm install
 
 ### Scripts
 
-We provide a set of npm scripts to make development and contribution easier:
+The following package.json scripts are available for your convenience:
 
 | Script | Description |
 |---|---|
 | `check` | Run the [Biome](https://biomejs.dev/) formatter and linter. Add `--write` to apply fixes automatically (`pnpm check --write`). |
-| `dev` | Launch a Chrome instance with the extension installed and hot reloading enabled. Use `dev:firefox` for a Firefox instance. |
-| `build` | Build the Chrome extension to `dist/`. Use `build:firefox` to build the Firefox version. |
-| `zip` | Build and zip the Chrome extension. Use `zip:firefox` to build and zip the Firefox version. |
+| `dev` | Launch a Chrome instance with the extension installed and hot reloading enabled. Use `dev:firefox` to launch a Firefox instance instead. |
+| `build` | Build the Chrome extension to `dist/`. Use `build:firefox` to build the Firefox version instead. |
+| `zip` | Build and zip the Chrome extension. Use `zip:firefox` to build and zip the Firefox version instead. |
 
 ## Releasing & Publishing
 
