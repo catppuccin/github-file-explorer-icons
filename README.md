@@ -40,6 +40,8 @@
 
 ## Usage
 
+### Marketplace
+
 The extension is available on the Chrome Web Store, Firefox Add-ons, and Microsoft Edge Add-ons extension stores. Click on your browser's badge below to install.
 
 <p align="center">
@@ -47,9 +49,6 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
   <a href="https://chromewebstore.google.com/detail/catppuccin-for-github-fil/lnjaiaapbakfhlbjenjkhffcdpoompki"><img src="https://img.shields.io/badge/Chrome_Web_Store-b7bdf8?style=for-the-badge&logo=GoogleChrome&logoColor=24273a"></a>
   <a href="https://microsoftedge.microsoft.com/addons/detail/catppuccin-for-github-fil/enicfllfdibbjhnpembomakaamcdcakl"><img src="https://img.shields.io/badge/Microsoft_Edge_Add--ons-7dc4e4?style=for-the-badge&logo=Microsoft-edge&logoColor=24273a"></a>
 </p>
-
-> [!NOTE]
-> Icons are pulled from [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons); please direct any requests for new icons or associations there!
 
 ### Manual
 
@@ -74,10 +73,18 @@ See the assets section at the bottom of [the latest release](https://github.com/
 
 </details>
 
+## Customization
+
+This extension aims to provide the same configuration options as [catppuccin/vscode-icons](https://github.com/catppuccin/vscode-icons) does. The flavor of icons, custom associations, as well as the `monochrome` & `specificFolders` options, can be customized in the extension's popup window (click the extension icon in your browser toolbar to reveal the popup).
+
 ## 🙋 FAQ
 
 - Q: **_"How can I enable this extension on a custom domain?"_**\
   A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+GitHub+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/github-file-explorer-icons/main/src/public/icon-128.png).
+
+## Contributing
+
+See [the contributing guide](./CONTRIBUTING.md).
 
 ## 💝 Thanks to
 
