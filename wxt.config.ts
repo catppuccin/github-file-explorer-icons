@@ -10,13 +10,23 @@ export default defineConfig({
 	srcDir: 'src',
 	entrypointsDir: 'entries',
 	outDir: 'dist',
-	manifest: {
-		name: 'Catppuccin for GitHub File Explorer Icons',
-		// See https://github.com/fregante/webext-dynamic-content-scripts/blob/main/how-to-add-github-enterprise-support-to-web-extensions.md.
-		permissions: ['storage', 'scripting', 'contextMenus', 'activeTab'],
-		// @ts-expect-error: Now in browsers (see https://github.com/w3c/webextensions/issues/119).
-		optional_host_permissions: ['*://*/*'],
-		homepage_url: 'https://github.com/catppuccin/github-file-explorer-icons',
+	// https://wxt.dev/guide/key-concepts/manifest.html
+	manifest: ({ manifestVersion }) => {
+		const defaults = {
+			name: 'Catppuccin for GitHub File Explorer Icons',
+			permissions: ['storage', 'contextMenus', 'activeTab'],
+		};
+
+		const mv3 = {
+			permissions: [...defaults.permissions, 'scripting'],
+			optional_host_permissions: ['*://*/*'],
+		};
+
+		const mv2 = {
+			optional_permissions: ['*://*/*'],
+		};
+
+		return { ...defaults, ...(manifestVersion === 3 ? mv3 : mv2) };
 	},
 	hooks: {
 		'build:before': async () => {
