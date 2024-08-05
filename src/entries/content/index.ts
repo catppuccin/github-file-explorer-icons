@@ -2,13 +2,13 @@ import { defineContentScript } from 'wxt/sandbox';
 
 import { observe } from 'selector-observer';
 
-import { SELECTORS } from '@/constants';
+import { MATCHES, SELECTORS } from '@/constants';
 import { flavor } from '@/storage';
 import { injectStyles, replaceIconInRow } from './lib';
 
 export default defineContentScript({
 	// Make sure `matches` URLs are updated in wxt.config.ts as well.
-	matches: ['*://github.com/*', '*://gitlab.com/*', '*://codeberg.org/*'],
+	matches: MATCHES,
 	runAt: 'document_start',
 
 	main() {

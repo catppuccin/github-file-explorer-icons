@@ -72,3 +72,5 @@ export const icons = {
 };
 
 export const ATTRIBUTE_PREFIX = 'data-catppuccin-file-explorer-icons';
+
+export const MATCHES = ['*://github.com/*', '*://gitlab.com/*', '*://codeberg.org/*'];
