@@ -78,6 +78,7 @@ export default defineConfig({
 			}
 		},
 	},
+	modules: ['@wxt-dev/auto-icons'],
 	runner: {
 		startUrls: [
 			'https://github.com/catppuccin/catppuccin',
