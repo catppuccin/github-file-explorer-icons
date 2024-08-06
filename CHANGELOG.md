@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.2...v0.9.0) (2024-08-06)
+
+
+### Features
+
+* update dependency wxt to v0.19.4, simplify build process ([#113](https://github.com/catppuccin/github-file-explorer-icons/issues/113)) ([1e55666](https://github.com/catppuccin/github-file-explorer-icons/commit/1e5566677aa701e1f2464a657e555891262dd885))
+
 ## [0.8.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.1...v0.8.2) (2024-07-17)
 
 
