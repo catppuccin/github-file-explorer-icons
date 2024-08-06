@@ -31,8 +31,8 @@ importers:
         specifier: 0.13.0
         version: 0.13.0
       '@wxt-dev/auto-icons':
-        specifier: 1.0.1
-        version: 1.0.1(wxt@0.19.4(@types/node@20.11.20)(rollup@4.18.0))
+        specifier: 1.0.2
+        version: 1.0.2(wxt@0.19.4(@types/node@20.11.20)(rollup@4.18.0))
       jiti:
         specifier: 1.21.6
         version: 1.21.6
@@ -722,8 +722,8 @@ packages:
   '@webext-core/match-patterns@1.0.3':
     resolution: {integrity: sha512-NY39ACqCxdKBmHgw361M9pfJma8e4AZo20w9AY+5ZjIj1W2dvXC8J31G5fjfOGbulW9w4WKpT8fPooi0mLkn9A==}
 
-  '@wxt-dev/auto-icons@1.0.1':
-    resolution: {integrity: sha512-eAnqZzxdwqkgY6VruNVvBHpJNLnCTvwyNtBW1iIvJerICBHjlqqfr4TcQrhyGeQtefCE+xPN9zLfvgIeZqzsag==}
+  '@wxt-dev/auto-icons@1.0.2':
+    resolution: {integrity: sha512-Wp1pZnRysvDvxkkkys6ZPXL9O2Q9RDjooAZeV19vBg4NXPyE21qO2fu3QmIcug3fPzKzpcFa6dm1Y1dX8qhfEg==}
     peerDependencies:
       wxt: '>=0.19.0'
 
@@ -2910,7 +2910,7 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@wxt-dev/auto-icons@1.0.1(wxt@0.19.4(@types/node@20.11.20)(rollup@4.18.0))':
+  '@wxt-dev/auto-icons@1.0.2(wxt@0.19.4(@types/node@20.11.20)(rollup@4.18.0))':
     dependencies:
       defu: 6.1.4
       fs-extra: 11.2.0
