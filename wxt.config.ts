@@ -6,6 +6,8 @@ import { optimize } from 'svgo';
 
 import jiti from 'jiti';
 
+import { MATCHES } from './src/constants';
+
 export default defineConfig({
 	srcDir: 'src',
 	entrypointsDir: 'entries',
@@ -69,17 +71,14 @@ export default defineConfig({
 				manifest.content_scripts ??= [];
 				manifest.content_scripts.push({
 					// Make sure `matches` URLs are updated in src/entries/content/index.ts as well.
-					matches: [
-						'*://github.com/*',
-						'*://gitlab.com/*',
-						'*://codeberg.org/*',
-					],
+					matches: MATCHES,
 					run_at: 'document_start',
 					js: ['content-scripts/content.js'],
 				});
 			}
 		},
 	},
+	modules: ['@wxt-dev/auto-icons'],
 	runner: {
 		startUrls: [
 			'https://github.com/catppuccin/catppuccin',

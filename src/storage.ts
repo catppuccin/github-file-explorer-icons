@@ -1,13 +1,13 @@
 import type { Associations, Flavor } from './types';
 
 export const flavor = storage.defineItem<Flavor>('local:flavor', {
-	defaultValue: 'mocha',
+	fallback: 'mocha',
 });
 
 export const customAssociations = storage.defineItem<Associations>(
 	'local:associations',
 	{
-		defaultValue: {
+		fallback: {
 			languageIds: {},
 			fileExtensions: {},
 			fileNames: {},
@@ -18,9 +18,9 @@ export const customAssociations = storage.defineItem<Associations>(
 
 export const specificFolders = storage.defineItem<boolean>(
 	'local:specificFolders',
-	{ defaultValue: true },
+	{ fallback: true },
 );
 
 export const monochrome = storage.defineItem<boolean>('local:monochrome', {
-	defaultValue: false,
+	fallback: false,
 });
