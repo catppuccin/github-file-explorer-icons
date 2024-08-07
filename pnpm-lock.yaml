@@ -25,8 +25,8 @@ importers:
         specifier: 1.8.3
         version: 1.8.3
       '@humanfs/node':
-        specifier: 0.16.3
-        version: 0.16.3
+        specifier: 0.16.4
+        version: 0.16.4
       '@humanfs/types':
         specifier: 0.13.0
         version: 0.13.0
@@ -442,8 +442,8 @@ packages:
     resolution: {integrity: sha512-2ZFEE4hN5cXBwDgyYUI9M2PMTaB5iP7BsRVl6pHbu+OOOHn6LdO+cjtrm5bBwjKZkJTq6TEpEAH1Tm/7T4aDhA==}
     engines: {node: '>=18.18.0'}
 
-  '@humanfs/node@0.16.3':
-    resolution: {integrity: sha512-o0mvgAAQQUMAWnu8H86czA25+q7I2YbtLEpCn6ZeTX08QK0iKiIfRM0mM6e3b4EUaBY81uKNO/wJzSWE3fl9Rw==}
+  '@humanfs/node@0.16.4':
+    resolution: {integrity: sha512-8osJSCatgyTEMvDmCTBtZxtmV5smQNhg2f30AG5T6Eid2AIZdcGBtB+NxCS5MUIq2BEYtgEDG0G7mYqMSjWQ+g==}
     engines: {node: '>=18.18.0'}
 
   '@humanfs/types@0.13.0':
@@ -2709,7 +2709,7 @@ snapshots:
 
   '@humanfs/core@0.18.2': {}
 
-  '@humanfs/node@0.16.3':
+  '@humanfs/node@0.16.4':
     dependencies:
       '@humanfs/core': 0.18.2
       '@humanwhocodes/retry': 0.3.0
