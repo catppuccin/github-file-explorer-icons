@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.2...v0.9.0) (2024-08-18)
+
+
+### Features
+
+* update vscode-icons submodule to v1.14.0 ([#118](https://github.com/catppuccin/github-file-explorer-icons/issues/118)) ([68eb57b](https://github.com/catppuccin/github-file-explorer-icons/commit/68eb57bc534674d698700aec6d27587e48b82c3d))
+* update vscode-icons submodule to v1.15.0 ([#121](https://github.com/catppuccin/github-file-explorer-icons/issues/121)) ([39f0b5f](https://github.com/catppuccin/github-file-explorer-icons/commit/39f0b5f8ebad6d4c8fb6cebdcb002cfb61e681a2))
+
 ## [0.8.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.8.1...v0.8.2) (2024-07-17)
 
 
