@@ -80,7 +80,7 @@ This extension aims to provide the same configuration options as [catppuccin/vsc
 ## 🙋 FAQ
 
 - Q: **_"How can I enable this extension on a custom domain?"_**\
-  A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+GitHub+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/github-file-explorer-icons/main/src/public/icon-128.png).
+  A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+GitHub+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/github-file-explorer-icons/main/src/assets/icon.png).
 
 ## Contributing
 
