@@ -33,8 +33,16 @@ jobs:
           pnpm zip
           pnpm zip:firefox
 
-      - name: Upload compiled extension artifacts
+      - name: Set job summary
+        run: |
+          echo $(ls -lhp dist/ | grep -v '/$' | awk '{print $5, $9}') >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload compiled Chrome extension
         uses: actions/upload-artifact@v4
         with:
-          path: dist/*.zip
+          path: dist/chrome-mv3
 
+      - name: Upload compiled Firefox extension
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist/firefox-mv2
