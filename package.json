@@ -16,7 +16,7 @@
 		"@wxt-dev/auto-icons": "1.0.2",
 		"jiti": "1.21.6",
 		"svgo": "3.2.0",
-		"wxt": "0.19.4"
+		"wxt": "0.19.9"
 	},
 	"scripts": {
 		"check": "biome check",
