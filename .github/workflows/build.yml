@@ -32,3 +32,9 @@ jobs:
         run: |
           pnpm zip
           pnpm zip:firefox
+
+      - name: Upload compiled extension artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist/*.zip
+
