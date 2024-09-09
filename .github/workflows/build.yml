@@ -35,14 +35,16 @@ jobs:
 
       - name: Set job summary
         run: |
-          echo $(ls -lhp dist/ | grep -v '/$' | awk '{print $5, $9}') >> $GITHUB_STEP_SUMMARY
+          echo "$(ls -lhp dist/ | grep -v '/$' | awk '{print $5, $9}')" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload compiled Chrome extension
         uses: actions/upload-artifact@v4
         with:
+          name: catppuccin-github-file-explorer-icons-chrome
           path: dist/chrome-mv3
 
       - name: Upload compiled Firefox extension
         uses: actions/upload-artifact@v4
         with:
+          name: catppuccin-github-file-explorer-icons-firefox
           path: dist/firefox-mv2
