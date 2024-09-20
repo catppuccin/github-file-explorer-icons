@@ -22,6 +22,7 @@ const GITHUB_SELECTORS = {
 		'.octicon-file-submodule',
 		'.react-directory-filename-column > svg',
 		'[aria-label="Parent directory"] svg',
+		'.PRIVATE_TreeView-item-visual > svg',
 	],
 };
 
