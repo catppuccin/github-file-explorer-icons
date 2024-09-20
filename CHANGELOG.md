@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.10.0...v0.11.0) (2024-09-20)
+
+
+### Features
+
+* support new commit details page icons ([#133](https://github.com/catppuccin/github-file-explorer-icons/issues/133)) ([af5c20b](https://github.com/catppuccin/github-file-explorer-icons/commit/af5c20bf94dc2d76ea5d040ef7ba4d3877332d65))
+
 ## [0.10.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.9.0...v0.10.0) (2024-09-14)
 
 
