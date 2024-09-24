@@ -19,7 +19,8 @@
 		"wxt": "0.19.9"
 	},
 	"scripts": {
-		"check": "biome check",
+		"lint": "biome check .",
+		"format": "biome format --write .",
 		"dev": "wxt",
 		"dev:firefox": "wxt --browser firefox",
 		"build": "wxt build",
