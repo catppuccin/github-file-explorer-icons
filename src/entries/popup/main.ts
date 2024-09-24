@@ -55,7 +55,9 @@ async function init() {
 	const associations = await customAssociations.getValue();
 
 	for (const [key, el] of Object.entries({
-		fileExtensions: document.querySelector('ul#associations-file-extensions'),
+		fileExtensions: document.querySelector(
+			'ul#associations-file-extensions',
+		),
 		fileNames: document.querySelector('ul#associations-file-names'),
 		folderNames: document.querySelector('ul#associations-folder-names'),
 	} as Record<keyof Associations, HTMLUListElement>) as Array<
@@ -136,7 +138,11 @@ async function init() {
 					associations[key][inputA.value] = inputB.value as IconName;
 					await customAssociations.setValue(associations);
 				}
-				if (!addedEmpty && inputA.checkValidity() && inputB.checkValidity()) {
+				if (
+					!addedEmpty &&
+					inputA.checkValidity() &&
+					inputB.checkValidity()
+				) {
 					addEmpty();
 					addedEmpty = true;
 				}
@@ -146,7 +152,11 @@ async function init() {
 					associations[key][inputA.value] = inputB.value as IconName;
 					await customAssociations.setValue(associations);
 				}
-				if (!addedEmpty && inputA.checkValidity() && inputB.checkValidity()) {
+				if (
+					!addedEmpty &&
+					inputA.checkValidity() &&
+					inputB.checkValidity()
+				) {
 					addEmpty();
 					addedEmpty = true;
 				}
