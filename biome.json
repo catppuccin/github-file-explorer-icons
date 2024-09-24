@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -11,11 +11,8 @@
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineEnding": "lf",
+		"useEditorconfig": true,
 		"lineWidth": 80,
-		"attributePosition": "auto",
 		"ignore": ["pnpm-lock.yaml"]
 	},
 	"organizeImports": { "enabled": true },
@@ -58,6 +55,11 @@
 			"bracketSameLine": false,
 			"quoteStyle": "single",
 			"attributePosition": "auto"
+		}
+	},
+	"css": {
+		"formatter": {
+			"quoteStyle": "single"
 		}
 	},
 	"overrides": [

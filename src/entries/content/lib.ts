@@ -184,7 +184,8 @@ async function findIconMatch(
 	for (const ext of fileExtensions) {
 		if (ext in associations.fileExtensions)
 			return associations.fileExtensions[ext];
-		if (ext in associations.languageIds) return associations.languageIds[ext];
+		if (ext in associations.languageIds)
+			return associations.languageIds[ext];
 	}
 
 	return '_file';
