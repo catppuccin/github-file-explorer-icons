@@ -32,7 +32,7 @@ importers:
         version: 0.13.0
       '@wxt-dev/auto-icons':
         specifier: 1.0.2
-        version: 1.0.2(wxt@0.19.9(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3))
+        version: 1.0.2(wxt@0.19.11(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3))
       jiti:
         specifier: 2.2.1
         version: 2.2.1
@@ -40,8 +40,8 @@ importers:
         specifier: 3.2.0
         version: 3.2.0
       wxt:
-        specifier: 0.19.9
-        version: 0.19.9(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3)
+        specifier: 0.19.11
+        version: 0.19.11(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3)
 
 packages:
 
@@ -1939,9 +1939,6 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  pkg-types@1.1.3:
-    resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
-
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
 
@@ -2178,10 +2175,6 @@ packages:
   string-width@5.1.2:
     resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
     engines: {node: '>=12'}
-
-  string-width@7.1.0:
-    resolution: {integrity: sha512-SEIJCWiX7Kg4c129n48aDRwLbFb2LJmXXFrWBG4NGaRtMQ3myKPKbwrD1BKqQn74oCoNMBVrfDEr5M9YxCsrkw==}
-    engines: {node: '>=18'}
 
   string-width@7.2.0:
     resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
@@ -2485,8 +2478,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  wxt@0.19.9:
-    resolution: {integrity: sha512-XUbF4JNyx2jTDpXwx2c/esaJcUD2Dr482C2GGenkGRMH2UnerzOIchGCtaa1hb2U8eAed7Akda0yRoMJU0uxUw==}
+  wxt@0.19.11:
+    resolution: {integrity: sha512-5SthX6H4jwM33VQQtNgLqZc7EzGV5ksz69omnI2kHYv22HfmVl4z7L1o0fgkl9XLyWyIz58nwf4YvQXGJWN5ig==}
     hasBin: true
 
   xdg-basedir@5.1.0:
@@ -2996,12 +2989,12 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@wxt-dev/auto-icons@1.0.2(wxt@0.19.9(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3))':
+  '@wxt-dev/auto-icons@1.0.2(wxt@0.19.11(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3))':
     dependencies:
       defu: 6.1.4
       fs-extra: 11.2.0
       sharp: 0.33.4
-      wxt: 0.19.9(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3)
+      wxt: 0.19.11(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3)
 
   acorn@8.12.1: {}
 
@@ -3130,7 +3123,7 @@ snapshots:
       ohash: 1.1.3
       pathe: 1.1.2
       perfect-debounce: 1.0.0
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
       rc9: 2.1.2
     optionalDependencies:
       magicast: 0.3.4
@@ -3219,7 +3212,7 @@ snapshots:
   cli-truncate@4.0.0:
     dependencies:
       slice-ansi: 5.0.0
-      string-width: 7.1.0
+      string-width: 7.2.0
 
   cliui@7.0.4:
     dependencies:
@@ -4033,7 +4026,7 @@ snapshots:
     dependencies:
       acorn: 8.12.1
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
       ufo: 1.5.3
 
   moment@2.30.1:
@@ -4108,7 +4101,7 @@ snapshots:
       consola: 3.2.3
       execa: 8.0.1
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.0
       ufo: 1.5.3
 
   object-assign@4.1.1: {}
@@ -4230,12 +4223,6 @@ snapshots:
   picocolors@1.0.1: {}
 
   picomatch@2.3.1: {}
-
-  pkg-types@1.1.3:
-    dependencies:
-      confbox: 0.1.7
-      mlly: 1.7.1
-      pathe: 1.1.2
 
   pkg-types@1.2.0:
     dependencies:
@@ -4526,12 +4513,6 @@ snapshots:
     dependencies:
       eastasianwidth: 0.2.0
       emoji-regex: 9.2.2
-      strip-ansi: 7.1.0
-
-  string-width@7.1.0:
-    dependencies:
-      emoji-regex: 10.3.0
-      get-east-asian-width: 1.2.0
       strip-ansi: 7.1.0
 
   string-width@7.2.0:
@@ -4854,7 +4835,7 @@ snapshots:
   wrap-ansi@9.0.0:
     dependencies:
       ansi-styles: 6.2.1
-      string-width: 7.1.0
+      string-width: 7.2.0
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}
@@ -4868,7 +4849,7 @@ snapshots:
 
   ws@8.18.0: {}
 
-  wxt@0.19.9(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3):
+  wxt@0.19.11(@types/node@20.11.20)(rollup@4.18.0)(webpack-sources@3.2.3):
     dependencies:
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.18.0)
       '@types/chrome': 0.0.269
@@ -4884,6 +4865,7 @@ snapshots:
       consola: 3.2.3
       defu: 6.1.4
       dequal: 2.0.3
+      dotenv: 16.4.5
       esbuild: 0.23.0
       execa: 9.3.1
       fast-glob: 3.3.2
@@ -4905,6 +4887,7 @@ snapshots:
       ohash: 1.1.3
       open: 10.1.0
       ora: 8.1.0
+      perfect-debounce: 1.0.0
       picocolors: 1.0.1
       prompts: 2.4.2
       publish-browser-extension: 2.1.3
