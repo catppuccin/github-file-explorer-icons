@@ -82,7 +82,7 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 			icon.getAttribute('class')?.includes('octicon-file-directory-') ||
 			icon.classList.contains('icon-directory') ||
 			icon.classList.contains('folder-icon')) &&
-		!fileNameEl.getAttribute('aria-label').includes('(Symlink to file)');
+		!fileNameEl.getAttribute('aria-label')?.includes('(Symlink to file)');
 	const isSubmodule =
 		icon.classList.contains('octicon-file-submodule') ||
 		fileNameEl.getAttribute('aria-label')?.includes('(Submodule)');
