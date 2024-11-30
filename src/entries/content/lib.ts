@@ -78,10 +78,11 @@ export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
 		.replace(/\u200E/g, '');
 
 	const isDir =
-		icon.getAttribute('aria-label') === 'Directory' ||
-		icon.getAttribute('class')?.includes('octicon-file-directory-') ||
-		icon.classList.contains('icon-directory') ||
-		icon.classList.contains('folder-icon');
+		(icon.getAttribute('aria-label') === 'Directory' ||
+			icon.getAttribute('class')?.includes('octicon-file-directory-') ||
+			icon.classList.contains('icon-directory') ||
+			icon.classList.contains('folder-icon')) &&
+		!fileNameEl.getAttribute('aria-label').includes('(Symlink to file)');
 	const isSubmodule =
 		icon.classList.contains('octicon-file-submodule') ||
 		fileNameEl.getAttribute('aria-label')?.includes('(Submodule)');
