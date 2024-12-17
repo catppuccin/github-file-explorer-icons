@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.12.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.0...v0.12.1) (2024-12-17)
+
+
+### Bug Fixes
+
+* disable icon injection on new commit details page ([#155](https://github.com/catppuccin/github-file-explorer-icons/issues/155)) ([e66ba59](https://github.com/catppuccin/github-file-explorer-icons/commit/e66ba592a2dc8392cbcef06db33b912fbffa130d))
+* optional chain for aria label attribute check ([#153](https://github.com/catppuccin/github-file-explorer-icons/issues/153)) ([4773b37](https://github.com/catppuccin/github-file-explorer-icons/commit/4773b3716832856ccbe91e4155aad56a01c8208f))
+* show correct icon for symlinked files ([#151](https://github.com/catppuccin/github-file-explorer-icons/issues/151)) ([021e31e](https://github.com/catppuccin/github-file-explorer-icons/commit/021e31ec532a5002b98090f8ebf2abd38236a9d5))
+
 ## [0.12.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.11.0...v0.12.0) (2024-10-14)
 
 
