@@ -1,9 +1,11 @@
 const GITHUB_SELECTORS = {
 	row: [
 		'.js-navigation-container[role=grid] > .js-navigation-item',
+		// Old commit details and pull request file tree.
 		'file-tree .ActionList-content',
 		'a.tree-browser-result',
-		'.PRIVATE_TreeView-item-content',
+		// For the inner repository file sidepanel. Extra specificity to avoid matching icons on the new commit details page, which uses the same component.
+		'ul[aria-label="Files"] .PRIVATE_TreeView-item-content',
 		'.react-directory-filename-column',
 		'[aria-label="Parent directory"]',
 	],
