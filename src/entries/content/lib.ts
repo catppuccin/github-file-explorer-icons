@@ -19,7 +19,7 @@ export async function injectStyles() {
 		.join('\n  ')}
 }
 
-.PRIVATE_TreeView-directory-icon svg {
+ul[aria-label="Files"] .PRIVATE_TreeView-directory-icon svg {
 	display: none !important;
 }
 
