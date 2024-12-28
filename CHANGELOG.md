@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.1...v0.12.2) (2024-12-20)
+
+
+### Bug Fixes
+
+* don't hide commit details file tree folder icons ([#157](https://github.com/catppuccin/github-file-explorer-icons/issues/157)) ([d8ebb9c](https://github.com/catppuccin/github-file-explorer-icons/commit/d8ebb9c4dfbfcfa224aa9aa761f9cf6c05c2efed))
+
 ## [0.12.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.0...v0.12.1) (2024-12-17)
 
 
