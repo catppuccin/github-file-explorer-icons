@@ -34,8 +34,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(wxt@0.19.22(@types/node@20.11.20)(rollup@4.18.0))
       jiti:
-        specifier: 2.2.1
-        version: 2.2.1
+        specifier: 2.4.2
+        version: 2.4.2
       svgo:
         specifier: 3.2.0
         version: 3.2.0
@@ -1431,8 +1431,8 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
-  jiti@2.2.1:
-    resolution: {integrity: sha512-weIl/Bv3G0J3UKamLxEA2G+FfQ33Z1ZkQJGPjKFV21zQdKWu2Pi6o4elpj2uEl5XdFJZ9xzn1fsanWTFSt45zw==}
+  jiti@2.4.2:
+    resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
 
   js-tokens@4.0.0:
@@ -3589,7 +3589,7 @@ snapshots:
 
   jiti@1.21.6: {}
 
-  jiti@2.2.1: {}
+  jiti@2.4.2: {}
 
   js-tokens@4.0.0: {}
 
