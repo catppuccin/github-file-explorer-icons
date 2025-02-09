@@ -28,8 +28,8 @@ importers:
         specifier: 0.16.6
         version: 0.16.6
       '@humanfs/types':
-        specifier: 0.13.0
-        version: 0.13.0
+        specifier: 0.15.0
+        version: 0.15.0
       '@wxt-dev/auto-icons':
         specifier: 1.0.2
         version: 1.0.2(wxt@0.19.22(@types/node@20.11.20)(rollup@4.18.0))
@@ -309,8 +309,8 @@ packages:
     resolution: {integrity: sha512-YuI2ZHQL78Q5HbhDiBA1X4LmYdXCKCMQIfw0pw7piHJwyREFebJUvrQN4cMssyES6x+vfUbx1CIpaQUKYdQZOw==}
     engines: {node: '>=18.18.0'}
 
-  '@humanfs/types@0.13.0':
-    resolution: {integrity: sha512-3QDsfgPh0XN4D5Wg89cmswDJWLtZI4iqt7N0MrRbJBfpE9LrTYMwNKHkfZupyN531hhYPsDOtCHhHhF75LWOrg==}
+  '@humanfs/types@0.15.0':
+    resolution: {integrity: sha512-ZZ1w0aoQkwuUuC7Yf+7sdeaNfqQiiLcSRbfI08oAxqLtpXQr9AIVX7Ay7HLDuiLYAaFPu8oBYNq/QIi9URHJ3Q==}
     engines: {node: '>=18.18.0'}
 
   '@humanwhocodes/retry@0.3.0':
@@ -2558,7 +2558,7 @@ snapshots:
       '@humanfs/core': 0.19.1
       '@humanwhocodes/retry': 0.3.0
 
-  '@humanfs/types@0.13.0': {}
+  '@humanfs/types@0.15.0': {}
 
   '@humanwhocodes/retry@0.3.0': {}
 
