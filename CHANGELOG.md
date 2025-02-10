@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.3](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.2...v0.12.3) (2025-02-10)
+
+
+### Bug Fixes
+
+* support gitea 1.23 ([#166](https://github.com/catppuccin/github-file-explorer-icons/issues/166)) ([b054145](https://github.com/catppuccin/github-file-explorer-icons/commit/b054145e377156418bcbd12f8466ee21c7de28bb))
+
 ## [0.12.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.1...v0.12.2) (2024-12-20)
 
 
