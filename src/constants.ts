@@ -56,11 +56,22 @@ const FORGEJO_SELECTORS = {
 	icon: ['.octicon-file-directory-fill', '.octicon-file'],
 };
 
+const GITEA_SELECTORS = {
+	row: [
+		'#repo-files-table .repo-file-item',
+		'#diff-file-tree .item-file',
+		'#diff-file-tree .item-directory',
+	],
+	filename: ['.name a.muted', 'span.gt-ellipsis'],
+	icon: ['.octicon-file-directory-fill', '.octicon-file'],
+};
+
 function mergeSelectors(key: keyof typeof GITHUB_SELECTORS): string {
 	return [
 		...GITHUB_SELECTORS[key],
 		...GITLAB_SELECTORS[key],
 		...FORGEJO_SELECTORS[key],
+		...GITEA_SELECTORS[key],
 	].join(',');
 }
 
@@ -80,4 +91,5 @@ export const MATCHES = [
 	'*://github.com/*',
 	'*://gitlab.com/*',
 	'*://codeberg.org/*',
+	'*://gitea.com/*',
 ];
