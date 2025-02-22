@@ -65,6 +65,5 @@ jobs:
           FIREFOX_CHANNEL: listed
           EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
           EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
-          EDGE_CLIENT_SECRET: ${{ secrets.EDGE_CLIENT_SECRET }}
-          EDGE_ACCESS_TOKEN_URL: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+          EDGE_API_KEY: ${{ secrets.EDGE_PUBLISH_API_KEY }}
           EDGE_SKIP_SUBMIT_REVIEW: false
