@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.3...v0.13.0) (2025-02-22)
+
+
+### Features
+
+* update catppuccin/vscode-icons to v1.18.0 ([#170](https://github.com/catppuccin/github-file-explorer-icons/issues/170)) ([6f50d28](https://github.com/catppuccin/github-file-explorer-icons/commit/6f50d28bd57221b5e3f74566912b4abea4601693))
+
 ## [0.12.3](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.2...v0.12.3) (2025-02-10)
 
 
