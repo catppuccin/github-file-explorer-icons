@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.13.1...v0.13.2) (2025-02-22)
+
+
+### Continuous Integration
+
+* **release-please:** update `EDGE_CLIENT_ID` secret ([#174](https://github.com/catppuccin/github-file-explorer-icons/issues/174)) ([b66aa33](https://github.com/catppuccin/github-file-explorer-icons/commit/b66aa3316169d91e32097385f1e3a3cbf069d2f3))
+
 ## [0.13.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.13.0...v0.13.1) (2025-02-22)
 
 
