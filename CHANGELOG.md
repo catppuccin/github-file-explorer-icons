@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.13.0...v0.13.1) (2025-02-22)
+
+
+### Continuous Integration
+
+* **release-please:** use new `EDGE_API_KEY` ([#172](https://github.com/catppuccin/github-file-explorer-icons/issues/172)) ([ef93398](https://github.com/catppuccin/github-file-explorer-icons/commit/ef933986552adc8da28694d26af5852a0497def0))
+
 ## [0.13.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.12.3...v0.13.0) (2025-02-22)
 
 
