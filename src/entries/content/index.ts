@@ -2,8 +2,8 @@ import { defineContentScript } from 'wxt/sandbox';
 
 import { observe } from 'selector-observer';
 
-import { flavor } from '@/storage';
 import { matches, sites } from '@/sites';
+import { flavor } from '@/storage';
 import { createStylesElement } from '@/utils';
 import { injectStyles, replaceIconInRow } from './lib';
 

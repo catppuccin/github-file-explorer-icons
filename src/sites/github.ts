@@ -1,5 +1,5 @@
-import { ATTRIBUTE_PREFIX } from '../constants';
 import type { ReplacementSelectorSet, Site } from '.';
+import { ATTRIBUTE_PREFIX } from '../constants';
 
 // For the inner repository file sidepanel. Extra specificity to avoid matching icons on the new commit details page, which uses the same component.
 const repositorySideTreeImplementation: ReplacementSelectorSet = {

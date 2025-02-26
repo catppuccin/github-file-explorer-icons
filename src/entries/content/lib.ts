@@ -5,8 +5,8 @@ import { flavor, monochrome, specificFolders } from '@/storage';
 
 import { flavors } from '@catppuccin/palette';
 
-import icons from '@/icons.json';
 import { ATTRIBUTE_PREFIX } from '@/constants';
+import icons from '@/icons.json';
 import type { ReplacementSelectorSet } from '@/sites';
 
 export async function injectStyles(stylesEl: Element, siteStyles: string) {
