@@ -1,5 +1,4 @@
 import type { ReplacementSelectorSet, Site } from './index.js';
-import { ATTRIBUTE_PREFIX } from '../constants.js';
 
 const mainRepositoryImplementation: ReplacementSelectorSet = {
 	row: 'table[data-qa="repository-directory"] tr',
