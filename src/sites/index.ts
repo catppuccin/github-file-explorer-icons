@@ -22,7 +22,6 @@ export type ReplacementSelectorSet = {
 export type Site = {
 	domains: Array<string>;
 	replacements: Array<ReplacementSelectorSet>;
-	styles?: string;
 };
 
 // import type { Site } from '.';
