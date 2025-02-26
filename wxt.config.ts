@@ -6,7 +6,7 @@ import { optimize } from 'svgo';
 
 import jiti from 'jiti';
 
-import { MATCHES } from './src/constants';
+import { matches } from './src/sites';
 
 export default defineConfig({
 	srcDir: 'src',
@@ -77,7 +77,7 @@ export default defineConfig({
 				manifest.content_scripts ??= [];
 				manifest.content_scripts.push({
 					// Make sure `matches` URLs are updated in src/entries/content/index.ts as well.
-					matches: MATCHES,
+					matches: matches,
 					run_at: 'document_start',
 					js: ['content-scripts/content.js'],
 				});
@@ -90,6 +90,7 @@ export default defineConfig({
 			'https://github.com/catppuccin/catppuccin',
 			'https://gitlab.com/gitlab-org/gitlab',
 			'https://codeberg.org/forgejo/forgejo',
+			'https://gitea.com/gitea/gitea-mirror',
 			'https://gitea.catppuccin.com/catppuccin/catppuccin',
 		],
 	},
