@@ -15,17 +15,20 @@ const repositorySideTreeImplementation: ReplacementSelectorSet = {
 		repositorySideTreeImplementation.isDirectory(rowEl, fileNameEl, iconEl),
 };
 repositorySideTreeImplementation.styles = /* css */ `
-/* Hide directory icons by default. */
-${repositorySideTreeImplementation.row} .PRIVATE_TreeView-directory-icon svg {
-	display: none !important;
+${repositorySideTreeImplementation.row} {
+	/* Hide directory icons by default. */
+	.PRIVATE_TreeView-directory-icon svg {
+		display: none !important;
+	}
+
+	/* Show relevant extension directory icon depending on open/closed state. */
+	svg[${ATTRIBUTE_PREFIX}-iconname$='_open']:has(~ svg.octicon-file-directory-open-fill:not([data-catppuccin-file-explorer-icons])),
+	svg:not([${ATTRIBUTE_PREFIX}-iconname$='_open']):has(~ svg.octicon-file-directory-fill:not([data-catppuccin-file-explorer-icons])),
+	svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
+		display: inline-block !important;
+	}
 }
-/* Show relevant extension directory icon depending on open/closed state. */
-${repositorySideTreeImplementation.row} svg[${ATTRIBUTE_PREFIX}-iconname$='_open']:has(~ svg.octicon-file-directory-open-fill:not([data-catppuccin-file-explorer-icons])),
-${repositorySideTreeImplementation.row} svg:not([${ATTRIBUTE_PREFIX}-iconname$='_open']):has(~ svg.octicon-file-directory-fill:not([data-catppuccin-file-explorer-icons])),
-${repositorySideTreeImplementation.row} svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
-	display: inline-block !important;
-}
-	`.trim();
+`.trim();
 
 const repositoryMainImplementation: ReplacementSelectorSet = {
 	row: '.react-directory-filename-column',
@@ -50,14 +53,17 @@ const pullRequestTreeImplementation: ReplacementSelectorSet = {
 		pullRequestTreeImplementation.isDirectory(rowEl, fileNameEl, iconEl),
 };
 pullRequestTreeImplementation.styles = /* css */ `
-/* Hide directory icons by default. */
-${pullRequestTreeImplementation.row} ${pullRequestTreeImplementation.icon}[aria-label="Directory"] {
-	display: none;
-}
-/* Show relevant extension directory icon depending on open/closed state. */
-${pullRequestTreeImplementation.row}[aria-expanded="true"] svg[${ATTRIBUTE_PREFIX}-iconname$='_open'],
-${pullRequestTreeImplementation.row}[aria-expanded="false"] svg[${ATTRIBUTE_PREFIX}]:not([${ATTRIBUTE_PREFIX}-iconname$='_open']) {
-	display: inline-block !important;
+${pullRequestTreeImplementation.row} {
+	/* Hide directory icons by default. */
+	${pullRequestTreeImplementation.icon}[aria-label="Directory"] {
+		display: none;
+	}
+
+	/* Show relevant extension directory icon depending on open/closed state. */
+	&[aria-expanded="true"] svg[${ATTRIBUTE_PREFIX}-iconname$='_open'],
+	&[aria-expanded="false"] svg[${ATTRIBUTE_PREFIX}]:not([${ATTRIBUTE_PREFIX}-iconname$='_open']) {
+		display: inline-block !important;
+	}
 }
 	`.trim();
 

@@ -90,6 +90,7 @@ export default defineConfig({
 			'https://github.com/catppuccin/catppuccin',
 			'https://gitlab.com/gitlab-org/gitlab',
 			'https://codeberg.org/forgejo/forgejo',
+			'https://gitea.com/gitea/gitea-mirror',
 			'https://gitea.catppuccin.com/catppuccin/catppuccin',
 		],
 	},
