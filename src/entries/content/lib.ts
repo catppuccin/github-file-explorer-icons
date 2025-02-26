@@ -1,40 +1,29 @@
 import type { IconName } from '@/types';
 
 import { getAssociations } from '@/associations';
-import { ATTRIBUTE_PREFIX, SELECTORS } from '@/constants';
 import { flavor, monochrome, specificFolders } from '@/storage';
-import { createStylesElement } from '@/utils';
 
 import { flavors } from '@catppuccin/palette';
 
 import icons from '@/icons.json';
+import { ATTRIBUTE_PREFIX } from '@/constants';
+import type { ReplacementSelectorSet } from '@/sites';
 
-export async function injectStyles() {
-	const styles = createStylesElement();
-
-	styles.textContent = /* css */ `
-:root {
-  ${flavors[await flavor.getValue()].colorEntries
+export async function injectStyles(stylesEl: Element, siteStyles: string) {
+	stylesEl.textContent =
+		/* css */ `
+	:root {
+	${flavors[await flavor.getValue()].colorEntries
 		.map(([name, { hex }]) => `--ctp-${name}: ${hex};`)
 		.join('\n  ')}
-}
-
-ul[aria-label="Files"] .PRIVATE_TreeView-directory-icon svg {
-	display: none !important;
-}
-
-svg[${ATTRIBUTE_PREFIX}-iconname$='_open']:has(~ svg.octicon-file-directory-open-fill:not([data-catppuccin-file-explorer-icons])),
-svg:not([${ATTRIBUTE_PREFIX}-iconname$='_open']):has(~ svg.octicon-file-directory-fill:not([data-catppuccin-file-explorer-icons])),
-svg[${ATTRIBUTE_PREFIX}]:has(+ .octicon-file) {
-	display: inline-block !important;
-}
-`.trim();
+	}
+	`.trim() + siteStyles;
 }
 
 async function createIconElement(
 	iconName: IconName,
 	fileName: string,
-	originalIcon: HTMLElement,
+	originalIconEl: HTMLElement,
 ): Promise<SVGSVGElement> {
 	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 	if (await monochrome.getValue()) {
@@ -49,11 +38,11 @@ async function createIconElement(
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
-	for (const attribute of originalIcon.getAttributeNames()) {
+	for (const attribute of originalIconEl.getAttributeNames()) {
 		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
 			svg.setAttribute(
 				attribute,
-				originalIcon.getAttribute(attribute) as string,
+				originalIconEl.getAttribute(attribute) as string,
 			);
 		}
 	}
@@ -61,102 +50,11 @@ async function createIconElement(
 	return svg;
 }
 
-export async function replaceIconInRow(row: HTMLElement) {
-	const icon = row.querySelector(SELECTORS.icon) as HTMLElement;
-	if (icon && !icon?.hasAttribute(ATTRIBUTE_PREFIX))
-		await replaceIcon(icon, row);
-}
-
-export async function replaceIcon(icon: HTMLElement, row: HTMLElement) {
-	const fileNameEl = row.querySelector(SELECTORS.filename) as HTMLElement;
-	if (!fileNameEl) return;
-	const fileName = fileNameEl.textContent
-		?.split('/')
-		.at(0)
-		.trim()
-		/* Remove [Unicode LEFT-TO-RIGHT MARK](https://en.wikipedia.org/wiki/Left-to-right_mark) used on GitLab's merge request diff file tree. */
-		.replace(/\u200E/g, '');
-
-	const isDir =
-		(icon.getAttribute('aria-label') === 'Directory' ||
-			icon.getAttribute('class')?.includes('octicon-file-directory-') ||
-			icon.classList.contains('icon-directory') ||
-			icon.classList.contains('folder-icon')) &&
-		!fileNameEl.getAttribute('aria-label')?.includes('(Symlink to file)');
-	const isSubmodule =
-		icon.classList.contains('octicon-file-submodule') ||
-		fileNameEl.getAttribute('aria-label')?.includes('(Submodule)');
-	const isOpen =
-		isDir && icon.classList.contains('octicon-file-directory-open-fill');
-
-	const fileExtensions: Array<string> = [];
-	// Avoid doing an explosive combination of extensions for very long filenames
-	// (most file systems do not allow files > 255 length) with lots of `.` characters
-	// https://github.com/microsoft/vscode/issues/116199
-	if (fileName.length <= 255) {
-		for (let i = 0; i < fileName.length; i += 1) {
-			if (fileName[i] === '.')
-				fileExtensions.push(fileName.toLowerCase().slice(i + 1));
-		}
-	}
-
-	const iconName = await findIconMatch(
-		fileName,
-		fileExtensions,
-		isDir,
-		isSubmodule,
-	);
-
-	await replaceElementWithIcon(
-		icon,
-		isOpen ? (`${iconName}_open` as IconName) : iconName,
-		fileName,
-	);
-}
-
-export async function replaceElementWithIcon(
-	icon: HTMLElement,
-	iconName: IconName,
-	fileName: string,
-) {
-	const replacement = await createIconElement(iconName, fileName, icon);
-
-	const prevEl = icon.previousElementSibling;
-	if (prevEl?.hasAttribute(ATTRIBUTE_PREFIX)) {
-		replacement.replaceWith(prevEl);
-	}
-	// If the icon to replace is an icon from this extension, replace it with the new icon.
-	else if (icon.hasAttribute(ATTRIBUTE_PREFIX)) {
-		icon.replaceWith(replacement);
-	}
-	// If neither of the above, prepend the new icon in front of the original icon.
-	// If we remove the icon, GitHub code view crashes when you navigate through the
-	// tree view. Instead, we just hide it via `style` attribute (not CSS class).
-	else {
-		icon.style.display = 'none';
-		icon.before(replacement);
-	}
-
-	if (
-		icon.parentElement.classList.contains('PRIVATE_TreeView-directory-icon')
-	) {
-		const companion = await createIconElement(
-			(iconName.includes('_open')
-				? iconName.replace('_open', '')
-				: `${iconName}_open`) as IconName,
-			fileName,
-			icon,
-		);
-
-		replacement.after(companion);
-	}
-}
-
 async function findIconMatch(
 	fileName: string,
 	fileExtensions: Array<string>,
-	isDir: boolean,
 	isSubmodule: boolean,
+	isDirectory: boolean,
 ): Promise<IconName> {
 	// Special parent directory folder icon.
 	if (fileName === '..') return '_folder';
@@ -166,7 +64,7 @@ async function findIconMatch(
 
 	if (useSpecificFolders && isSubmodule) return 'folder_git';
 
-	if (isDir) {
+	if (isDirectory) {
 		if (useSpecificFolders) {
 			if (fileName in associations.folderNames)
 				return associations.folderNames[fileName];
@@ -190,4 +88,75 @@ async function findIconMatch(
 	}
 
 	return '_file';
+}
+
+export async function replaceIconInRow(
+	rowEl: HTMLElement,
+	selectors: ReplacementSelectorSet,
+) {
+	const iconEl = rowEl.querySelector(selectors.icon) as HTMLElement;
+	console.log({ iconEl });
+	// Icon already has extension prefix, not necessary to replace again.
+	if (!iconEl || iconEl?.hasAttribute(ATTRIBUTE_PREFIX)) return;
+
+	const fileNameEl = rowEl.querySelector(selectors.filename) as HTMLElement;
+	if (!fileNameEl) return;
+	const fileName = fileNameEl.textContent
+		?.split('/')
+		.at(0)
+		.trim()
+		/* Remove [Unicode LEFT-TO-RIGHT MARK](https://en.wikipedia.org/wiki/Left-to-right_mark) used on GitLab's merge request diff file tree. */
+		.replace(/\u200E/g, '');
+
+	const fileExtensions: Array<string> = [];
+	// Avoid doing an explosive combination of extensions for very long filenames
+	// (most file systems do not allow files > 255 length) with lots of `.` characters
+	// https://github.com/microsoft/vscode/issues/116199
+	if (fileName.length <= 255) {
+		for (let i = 0; i < fileName.length; i += 1) {
+			if (fileName[i] === '.')
+				fileExtensions.push(fileName.toLowerCase().slice(i + 1));
+		}
+	}
+
+	const isDirectory = selectors.isDirectory(rowEl, fileNameEl, iconEl);
+	const isSubmodule = selectors.isSubmodule(rowEl, fileNameEl, iconEl);
+	const isCollapsable = selectors.isCollapsable(rowEl, fileNameEl, iconEl);
+	console.log({ isCollapsable });
+
+	const iconName = await findIconMatch(
+		fileName,
+		fileExtensions,
+		isSubmodule,
+		isDirectory,
+	);
+
+	const replacementEl = await createIconElement(iconName, fileName, iconEl);
+
+	// Check if element sibling before current element was inserted by extension, replace the old replacement with the new one instead.
+	const prevEl = iconEl.previousElementSibling;
+	if (prevEl?.hasAttribute(ATTRIBUTE_PREFIX)) {
+		replacementEl.replaceWith(prevEl);
+	}
+	// If the current icon element is an icon from this extension, replace it with the new icon.
+	else if (iconEl.hasAttribute(ATTRIBUTE_PREFIX)) {
+		iconEl.replaceWith(replacementEl);
+	}
+	// If neither of the above, prepend the new icon to the original icon element.
+	// If we remove the icon, GitHub code view crashes when you navigate through the
+	// tree view. Instead, we just hide it via `style` attribute (not CSS class).
+	else {
+		iconEl.style.display = 'none';
+		iconEl.before(replacementEl);
+	}
+
+	if (isCollapsable) {
+		const companionEl = await createIconElement(
+			`${iconName}_open` as IconName,
+			fileName,
+			iconEl,
+		);
+
+		replacementEl.after(companionEl);
+	}
 }
