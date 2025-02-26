@@ -41,6 +41,15 @@ const repositoryMainImplementation: ReplacementSelectorSet = {
 	isCollapsable: (_rowEl, _fileNameEl, _iconEl) => false,
 };
 
+const repositoryMainParentDirectoryImplementation: ReplacementSelectorSet = {
+	row: '#folder-row-0 [aria-label="Parent directory"]',
+	filename: 'div',
+	icon: 'svg',
+	isDirectory: (_rowEl, _fileNameEl, _iconEl) => true,
+	isSubmodule: (_rowEl, _fileNameEl, _iconEl) => false,
+	isCollapsable: (_rowEl, _fileNameEl, _iconEl) => false,
+};
+
 const pullRequestTreeImplementation: ReplacementSelectorSet = {
 	row: 'file-tree .ActionList-content',
 	filename: '.ActionList-item-label',
@@ -73,5 +82,6 @@ export const github: Site = {
 		repositorySideTreeImplementation,
 		repositoryMainImplementation,
 		pullRequestTreeImplementation,
+		repositoryMainParentDirectoryImplementation,
 	],
 };
