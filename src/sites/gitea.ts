@@ -8,12 +8,12 @@ export const gitea: Site = {
 `.trim(),
 };
 
-const GITEA_SELECTORS = {
-	row: [
-		'#repo-files-table .repo-file-item',
-		'#diff-file-tree .item-file',
-		'#diff-file-tree .item-directory',
-	],
-	filename: ['.name a.muted', 'span.gt-ellipsis'],
-	icon: ['.octicon-file-directory-fill', '.octicon-file'],
-};
+// const GITEA_SELECTORS = {
+// 	row: [
+// 		'#repo-files-table .repo-file-item',
+// 		'#diff-file-tree .item-file',
+// 		'#diff-file-tree .item-directory',
+// 	],
+// 	filename: ['.name a.muted', 'span.gt-ellipsis'],
+// 	icon: ['.octicon-file-directory-fill', '.octicon-file'],
+// };

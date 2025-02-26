@@ -8,12 +8,12 @@ export const forgejo: Site = {
 `.trim(),
 };
 
-const FORGEJO_SELECTORS = {
-	row: [
-		'#repo-files-table .entry',
-		'#diff-file-tree .item-file',
-		'#diff-file-tree .item-directory',
-	],
-	filename: ['.name a.muted', 'span.gt-ellipsis'],
-	icon: ['.octicon-file-directory-fill', '.octicon-file'],
-};
+// const FORGEJO_SELECTORS = {
+// 	row: [
+// 		'#repo-files-table .entry',
+// 		'#diff-file-tree .item-file',
+// 		'#diff-file-tree .item-directory',
+// 	],
+// 	filename: ['.name a.muted', 'span.gt-ellipsis'],
+// 	icon: ['.octicon-file-directory-fill', '.octicon-file'],
+// };
