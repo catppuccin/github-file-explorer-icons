@@ -64,4 +64,5 @@ export const gitlab: Site = {
 		commitDiffFileHeaderImplementation,
 		mergeRequestsTreeImplementation,
 	],
+	isDark: (rootEl) => rootEl.classList.contains('gl-dark'),
 };

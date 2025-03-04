@@ -84,4 +84,16 @@ export const github: Site = {
 		pullRequestTreeImplementation,
 		repositoryMainParentDirectoryImplementation,
 	],
+	isDark: (rootEl, systemDark) => {
+		const colorMode = rootEl.getAttribute('data-color-mode');
+		const darkTheme = rootEl.getAttribute('data-dark-theme');
+		const lightTheme = rootEl.getAttribute('data-light-theme');
+
+		return (
+			(colorMode === 'dark' && darkTheme === 'dark') ||
+			(colorMode === 'light' && lightTheme === 'dark') ||
+			(colorMode === 'auto' &&
+				(systemDark ? darkTheme === 'dark' : lightTheme === 'dark'))
+		);
+	},
 };

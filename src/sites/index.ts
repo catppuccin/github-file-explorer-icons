@@ -22,6 +22,7 @@ export type ReplacementSelectorSet = {
 export type Site = {
 	domains: Array<string>;
 	replacements: Array<ReplacementSelectorSet>;
+	isDark: (rootEl: Element, systemDark: boolean) => boolean;
 };
 
 // import type { Site } from '.';

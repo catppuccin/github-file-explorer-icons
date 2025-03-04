@@ -40,4 +40,13 @@ ${diffTreeImplementation.row} {
 export const gitea: Site = {
 	domains: ['gitea.com'],
 	replacements: [mainRepositoryImplementation, diffTreeImplementation],
+	isDark: (rootEl, systemDark) => {
+		const theme = rootEl.getAttribute('data-theme');
+
+		return theme === 'gitea-auto'
+			? systemDark
+			: ['gitea-dark', 'gitea-dark-protanopia-deuteranopia'].includes(
+					theme,
+				);
+	},
 };

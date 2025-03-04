@@ -40,4 +40,12 @@ ${diffTreeImplementation.row} {
 export const forgejo: Site = {
 	domains: ['codeberg.org'],
 	replacements: [mainRepositoryImplementation, diffTreeImplementation],
+	isDark: (rootEl, systemDark) => {
+		const theme = rootEl.getAttribute('data-theme');
+
+		return (
+			theme === 'codeberg-dark' ||
+			(theme === 'codeberg-auto' && systemDark)
+		);
+	},
 };
