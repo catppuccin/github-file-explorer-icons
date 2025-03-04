@@ -3,6 +3,7 @@ import { forgejo } from './forgejo';
 import { gitea } from './gitea';
 import { github } from './github';
 import { gitlab } from './gitlab';
+import { tangled } from './tangled';
 
 export type FnWithContext<T> = (
 	rowEl: HTMLElement,
@@ -35,7 +36,14 @@ export type Site = {
 // `.trim(),
 // };
 
-export const sites: Array<Site> = [github, gitlab, gitea, forgejo, bitbucket];
+export const sites: Array<Site> = [
+	github,
+	gitlab,
+	gitea,
+	forgejo,
+	bitbucket,
+	tangled,
+];
 export const matches: Array<string> = sites
 	.flatMap((site) => site.domains)
 	.map((domain) => `*://${domain}/*`);
