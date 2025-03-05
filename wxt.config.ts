@@ -83,6 +83,7 @@ export default defineConfig({
 			'https://codeberg.org/forgejo/forgejo',
 			'https://gitea.com/gitea/gitea-mirror',
 			'https://gitea.catppuccin.com/catppuccin/catppuccin',
+			'https://tangled.sh/@tangled.sh/core',
 		],
 	},
 });

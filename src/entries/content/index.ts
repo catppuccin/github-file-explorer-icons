@@ -37,7 +37,13 @@ function runReplacements(
 	for (const replacement of replacements) {
 		observe(replacement.row, {
 			async add(rowEl: HTMLElement) {
-				await replaceIconInRow(rowEl, replacement);
+				// TODO: Remove development timeout wrapper.
+				setTimeout(
+					() =>
+						// await
+						replaceIconInRow(rowEl, replacement),
+					1000,
+				);
 			},
 		});
 	}
