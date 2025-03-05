@@ -83,6 +83,7 @@ export default defineConfig({
 			'https://codeberg.org/forgejo/forgejo',
 			'https://gitea.com/gitea/gitea-mirror',
 			'https://gitea.catppuccin.com/catppuccin/catppuccin',
+			'https://bitbucket.org/atlassian/atlassian-frontend-mirror',
 		],
 	},
 });
