@@ -25,15 +25,16 @@ async function createIconElement(
 	fileName: string,
 	originalIconEl: HTMLElement,
 ): Promise<SVGSVGElement> {
-	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	const temp = document.createElement('div');
 	if (await monochrome.getValue()) {
-		svg.innerHTML = icons[iconName].replaceAll(
+		temp.innerHTML = icons[iconName].replaceAll(
 			/var\(--ctp-\w+\)/g,
 			'var(--ctp-text)',
 		);
 	} else {
-		svg.innerHTML = icons[iconName];
+		temp.innerHTML = icons[iconName];
 	}
+	const svg = temp.firstElementChild as SVGSVGElement;
 	svg.setAttribute(ATTRIBUTE_PREFIX, '');
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
