@@ -95,7 +95,6 @@ export async function replaceIconInRow(
 	selectors: ReplacementSelectorSet,
 ) {
 	const iconEl = rowEl.querySelector(selectors.icon) as HTMLElement;
-	console.log({ iconEl });
 	// Icon already has extension prefix, not necessary to replace again.
 	if (!iconEl || iconEl?.hasAttribute(ATTRIBUTE_PREFIX)) return;
 
