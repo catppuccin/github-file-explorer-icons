@@ -41,19 +41,11 @@ export default defineConfig({
 			for await (const entry of hfs.list(ICON_DIR)) {
 				icons[entry.name.replace('.svg', '')] = await hfs
 					.text(join(ICON_DIR, entry.name))
-					.then((text) => {
-						return optimize(
-							text.replaceAll('--vscode-ctp', '--ctp'),
-							{
-								js2svg: { useShortTags: false },
-							},
-						)
-							.data.replace(
-								'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">',
-								'',
-							)
-							.replace('</svg>', '');
-					});
+					.then((text) =>
+						text
+							.replaceAll('--vscode-ctp', '--ctp')
+							.replaceAll('\n\t', ''),
+					);
 			}
 
 			await hfs.write(
