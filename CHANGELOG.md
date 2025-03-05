@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.13.3](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.13.2...v0.13.3) (2025-03-05)
+
+
+### Bug Fixes
+
+* avoid adding original attributes that affect SVG shape/size ([b35b9fb](https://github.com/catppuccin/github-file-explorer-icons/commit/b35b9fb59f6c4bdd77cec66ae19dbe555782af8e))
+* remove extraneous console.log ([3368cbd](https://github.com/catppuccin/github-file-explorer-icons/commit/3368cbd74dd940e80a4d6fd80dab2c916cc60274))
+
 ## [0.13.2](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.13.1...v0.13.2) (2025-02-22)
 
 
