@@ -25,21 +25,32 @@ async function createIconElement(
 	fileName: string,
 	originalIconEl: HTMLElement,
 ): Promise<SVGSVGElement> {
-	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	const temp = document.createElement('div');
 	if (await monochrome.getValue()) {
-		svg.innerHTML = icons[iconName].replaceAll(
+		temp.innerHTML = icons[iconName].replaceAll(
 			/var\(--ctp-\w+\)/g,
 			'var(--ctp-text)',
 		);
 	} else {
-		svg.innerHTML = icons[iconName];
+		temp.innerHTML = icons[iconName];
 	}
+	const svg = temp.firstElementChild as SVGSVGElement;
 	svg.setAttribute(ATTRIBUTE_PREFIX, '');
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-iconname`, iconName);
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
 	for (const attribute of originalIconEl.getAttributeNames()) {
-		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
+		if (
+			!(
+				attribute.startsWith(ATTRIBUTE_PREFIX) ||
+				[
+					'viewBox',
+					'stroke-width',
+					'stroke-linecap',
+					'stroke-linejoin',
+				].includes(attribute)
+			)
+		) {
 			svg.setAttribute(
 				attribute,
 				originalIconEl.getAttribute(attribute) as string,
@@ -95,7 +106,6 @@ export async function replaceIconInRow(
 	selectors: ReplacementSelectorSet,
 ) {
 	const iconEl = rowEl.querySelector(selectors.icon) as HTMLElement;
-	console.log({ iconEl });
 	// Icon already has extension prefix, not necessary to replace again.
 	if (!iconEl || iconEl?.hasAttribute(ATTRIBUTE_PREFIX)) return;
 
@@ -122,7 +132,6 @@ export async function replaceIconInRow(
 	const isDirectory = selectors.isDirectory(rowEl, fileNameEl, iconEl);
 	const isSubmodule = selectors.isSubmodule(rowEl, fileNameEl, iconEl);
 	const isCollapsable = selectors.isCollapsable(rowEl, fileNameEl, iconEl);
-	console.log({ isCollapsable });
 
 	const iconName = await findIconMatch(
 		fileName,
