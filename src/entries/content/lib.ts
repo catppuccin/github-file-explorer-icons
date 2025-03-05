@@ -40,7 +40,17 @@ async function createIconElement(
 	svg.setAttribute(`${ATTRIBUTE_PREFIX}-filename`, fileName);
 
 	for (const attribute of originalIconEl.getAttributeNames()) {
-		if (!attribute.startsWith(ATTRIBUTE_PREFIX)) {
+		if (
+			!(
+				attribute.startsWith(ATTRIBUTE_PREFIX) ||
+				[
+					'viewBox',
+					'stroke-width',
+					'stroke-linecap',
+					'stroke-linejoin',
+				].includes(attribute)
+			)
+		) {
 			svg.setAttribute(
 				attribute,
 				originalIconEl.getAttribute(attribute) as string,
