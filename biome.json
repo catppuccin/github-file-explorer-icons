@@ -37,7 +37,8 @@
 				"useForOf": "error"
 			},
 			"suspicious": {
-				"useAwait": "error"
+				"useAwait": "error",
+				"noConsole": "error"
 			},
 			"complexity": {
 				"useSimplifiedLogicExpression": "error"

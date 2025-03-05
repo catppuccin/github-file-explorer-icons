@@ -132,7 +132,6 @@ export async function replaceIconInRow(
 	const isDirectory = selectors.isDirectory(rowEl, fileNameEl, iconEl);
 	const isSubmodule = selectors.isSubmodule(rowEl, fileNameEl, iconEl);
 	const isCollapsable = selectors.isCollapsable(rowEl, fileNameEl, iconEl);
-	console.log({ isCollapsable });
 
 	const iconName = await findIconMatch(
 		fileName,
