@@ -1,3 +1,4 @@
+import { bitbucket } from './bitbucket';
 import { forgejo } from './forgejo';
 import { gitea } from './gitea';
 import { github } from './github';
@@ -34,7 +35,7 @@ export type Site = {
 // `.trim(),
 // };
 
-export const sites: Array<Site> = [github, gitlab, gitea, forgejo];
+export const sites: Array<Site> = [github, gitlab, gitea, forgejo, bitbucket];
 export const matches: Array<string> = sites
 	.flatMap((site) => site.domains)
 	.map((domain) => `*://${domain}/*`);
