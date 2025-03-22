@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.15.0...v0.16.0) (2025-03-22)
+
+
+### Features
+
+* support tangled.sh ([#182](https://github.com/catppuccin/github-file-explorer-icons/issues/182)) ([b8f9acc](https://github.com/catppuccin/github-file-explorer-icons/commit/b8f9acc8061ea3b68c4127df8115b6478ad431cf))
+
 ## [0.15.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.14.0...v0.15.0) (2025-03-18)
 
 
