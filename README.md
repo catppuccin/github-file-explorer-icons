@@ -89,7 +89,7 @@ See [the contributing guide](./CONTRIBUTING.md).
 ## 💝 Thanks to
 
 - [uncenter](https://github.com/uncenter)
-- [Claudiohbsantos/github-material-icons-extension](https://github.com/Claudiohbsantos/github-material-icons-extension)
+- [material-extensions/material-icons-browser-extension](https://github.com/material-extensions/material-icons-browser-extension)
 
 &nbsp;
 
