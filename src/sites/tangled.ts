@@ -5,7 +5,7 @@ const mainRepositoryImplementation: ReplacementSelectorSet = {
 	filename: 'a',
 	icon: 'svg',
 	isDirectory: (_rowEl, _fileNameEl, iconEl) =>
-		iconEl.classList.contains('lucide-folder'),
+		iconEl.classList.contains('fill-current'),
 	isSubmodule: (_rowEl, _fileNameEl, _iconEl) => false, // TODO: Implement isSubmodule.
 	isCollapsable: (_rowEl, _fileNameEl, _iconEl) => false,
 };
