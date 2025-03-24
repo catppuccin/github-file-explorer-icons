@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.16.0...v1.0.0) (2025-03-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename to web-file-explorer-icons ([#188](https://github.com/catppuccin/github-file-explorer-icons/issues/188))
+
+### Code Refactoring
+
+* rename to web-file-explorer-icons ([#188](https://github.com/catppuccin/github-file-explorer-icons/issues/188)) ([80dcf2b](https://github.com/catppuccin/github-file-explorer-icons/commit/80dcf2ba795fbbace9d9891ee6047d22d7bd920f))
+
 ## [0.16.0](https://github.com/catppuccin/github-file-explorer-icons/compare/v0.15.0...v0.16.0) (2025-03-22)
 
 
