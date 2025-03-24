@@ -1,14 +1,14 @@
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
-	Catppuccin for <a href="https://github.com">GitHub File Explorer Icons</a>
+	Catppuccin for Web File Explorer Icons
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/github-file-explorer-icons/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/github-file-explorer-icons?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/github-file-explorer-icons/issues"><img src="https://img.shields.io/github/issues/catppuccin/github-file-explorer-icons?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/github-file-explorer-icons/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/github-file-explorer-icons?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/web-file-explorer-icons/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/web-file-explorer-icons?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/web-file-explorer-icons/issues"><img src="https://img.shields.io/github/issues/catppuccin/web-file-explorer-icons?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/catppuccin/web-file-explorer-icons/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/web-file-explorer-icons?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ The extension is available on the Chrome Web Store, Firefox Add-ons, and Microso
 
 ### Manual
 
-See the assets section at the bottom of [the latest release](https://github.com/catppuccin/github-file-explorer-icons/releases/latest) for pre-compiled zips of the extension. The Chrome zip will work for any Chromium browser (Microsoft Edge, Opera, Arc, etc.).
+See the assets section at the bottom of [the latest release](https://github.com/catppuccin/web-file-explorer-icons/releases/latest) for pre-compiled zips of the extension. The Chrome zip will work for any Chromium browser (Microsoft Edge, Opera, Arc, etc.).
 
 <details>
 <summary>Chrome</summary>
@@ -80,7 +80,7 @@ This extension aims to provide the same configuration options as [catppuccin/vsc
 ## 🙋 FAQ
 
 - Q: **_"How can I enable this extension on a custom domain?"_**\
-  A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+GitHub+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/github-file-explorer-icons/main/src/assets/icon.png).
+  A: See [fregante.github.io/webext-permission-toggle](https://fregante.github.io/webext-permission-toggle/?name=Catppuccin+for+Web+File+Explorer+Icons&icon=https://raw.githubusercontent.com/catppuccin/web-file-explorer-icons/main/src/assets/icon.png).
 
 ## Contributing
 

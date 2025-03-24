@@ -40,11 +40,11 @@ jobs:
       - name: Upload compiled Chrome extension
         uses: actions/upload-artifact@v4
         with:
-          name: catppuccin-github-file-explorer-icons-chrome
+          name: catppuccin-web-file-explorer-icons-chrome
           path: dist/chrome-mv3
 
       - name: Upload compiled Firefox extension
         uses: actions/upload-artifact@v4
         with:
-          name: catppuccin-github-file-explorer-icons-firefox
+          name: catppuccin-web-file-explorer-icons-firefox
           path: dist/firefox-mv2
