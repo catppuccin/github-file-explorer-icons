@@ -40,7 +40,7 @@
 
 ## About
 
-Applies Catppuccin-themed code icons to file explorer on the following sites/platforms:
+Applies Catppuccin-themed code/file icons to file explorers on the following sites/platforms:
 
 - [GitHub](https://github.com)
 - [Gitlab](https://gitlab.com)
