@@ -19,6 +19,17 @@
 	<img src="assets/previews/preview.webp"/>
 </p>
 
+## About
+
+Applies Catppuccin-themed code icons to file explorer on the following sites/platforms:
+
+- [GitHub](https://github.com)
+- [Gitlab](https://gitlab.com)
+- [Gitea](https://gitea.com)
+- [Forgejo](https://forgejo.org/)
+- [Bitbucket](https://bitbucket.org/account/workspaces)
+- [tangled.sh](https://tangled.sh/)
+
 ## Previews
 
 <details>
