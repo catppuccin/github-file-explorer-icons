@@ -68,7 +68,7 @@ See the assets section at the bottom of [the latest release](https://github.com/
 <details>
 <summary>Chrome</summary>
 
-1. Unzip the `catppuccin-github-icons-extension-<version>-chrome.zip` asset from the latest release.
+1. Unzip the `catppuccin-web-file-explorer-icons-<version>-chrome.zip` asset from the latest release.
 2. Open the Extensions page by navigating to `chrome://extensions`.
 3. Enable Developer Mode (if not already enabled) by flipping the toggle switch labeled **Developer mode**.
 4. Click the **Load unpacked** button and select the unzipped directory from Step 1.
@@ -80,7 +80,7 @@ See the assets section at the bottom of [the latest release](https://github.com/
 
 1. Open the Add-ons page by navigating to `about:addons`.
 2. Click the cog/settings icon in line with the "Manage Your Extensions" heading, and select **Debug Add-ons**.
-3. Click the **Load Temporary Add-on...** button and select the `catppuccin-github-icons-extension-<version>-firefox.zip` asset from the latest release.
+3. Click the **Load Temporary Add-on...** button and select the `catppuccin-web-file-explorer-icons-<version>-firefox.zip` asset from the latest release.
 
 </details>
 
