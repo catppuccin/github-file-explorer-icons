@@ -14,7 +14,7 @@ export default defineConfig({
 	// https://wxt.dev/guide/key-concepts/manifest.html
 	manifest: ({ manifestVersion }) => {
 		const defaults = {
-			name: 'Catppuccin for GitHub File Explorer Icons',
+			name: 'Catppuccin for Web File Explorer Icons',
 			permissions: ['storage', 'contextMenus', 'activeTab'],
 		};
 

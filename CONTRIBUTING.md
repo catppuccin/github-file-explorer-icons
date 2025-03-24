@@ -29,8 +29,8 @@
 > Make sure to clone the repository with `--recurse-submodules` to create the `vscode-icons/` submodule, which is necessary for building the extension.
 
 ```bash
-git clone --recurse-submodules https://github.com/catppuccin/github-file-explorer-icons.git
-cd github-file-explorer-icons
+git clone --recurse-submodules https://github.com/catppuccin/web-file-explorer-icons.git
+cd web-file-explorer-icons
 pnpm install
 ```
 
@@ -47,7 +47,7 @@ The following package.json scripts are available for your convenience:
 
 ## Releasing & Publishing
 
-This repository uses [Release Please](https://github.com/googleapis/release-please) to scan commit messages and create release pull requests when needed. Once a release pull request is merged, Release Please will create a GitHub release with a auto-generated changelog, and [the publishing step](https://github.com/catppuccin/github-file-explorer-icons/blob/main/.github/workflows/release-please.yml#L22-L70) of the workflow is ran to publish the extension to the extension stores.
+This repository uses [Release Please](https://github.com/googleapis/release-please) to scan commit messages and create release pull requests when needed. Once a release pull request is merged, Release Please will create a GitHub release with a auto-generated changelog, and [the publishing step](https://github.com/catppuccin/web-file-explorer-icons/blob/main/.github/workflows/release-please.yml#L22-L70) of the workflow is ran to publish the extension to the extension stores.
 
 ### API credentials
 
